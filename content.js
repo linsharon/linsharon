@@ -31,37 +31,37 @@ window.PORTFOLIO_CONTENT = {
   },
   projects: {
     subtitle:
-      "A curated set of UX case studies spanning research, design, and evaluation.",
+      "A curated set of past UX design projects.",
     items: [
       {
         id: 1,
-        title: "HealthBridge Patient Portal",
-        category: "Healthcare UX",
+        title: "ResearchIC.com",
+        category: "Scientific Communication",
         description:
-          "Redesigned a patient-facing health portal used by 1.2 million users. Led end-to-end research, journey mapping, and iterative prototyping that reduced appointment-booking errors by 38%.",
-        tags: ["User Research", "Journey Mapping", "Figma", "Usability Testing"],
+          "This domain was once the home to an online journal club hosting platform. I designed and developed the whole system using the Moodle system.",
+        tags: ["Journey Mapping", "LMS", "Moodle","Usability Testing"],
         emoji: "🏥",
         color: "#e8f5e9",
         link: "#",
       },
       {
         id: 2,
-        title: "EduPath Learning Dashboard",
-        category: "Education Technology",
+        title: "Programship.com",
+        category: "International Education",
         description:
-          "Designed an adaptive learning dashboard for K-12 students. Conducted contextual inquiry with 60 students and teachers, resulting in a 45% improvement in task-completion rate during usability tests.",
-        tags: ["Contextual Inquiry", "Interaction Design", "Sketch", "A/B Testing"],
+          "Designed a web platform to facilitate the information and communication exchanges between Chinese prospective students and international education programs abroad.",
+        tags: ["Interaction Design", "Prototyping", "Usability Testing"],
         emoji: "📚",
         color: "#e3f2fd",
         link: "#",
       },
       {
         id: 3,
-        title: "Nexus Enterprise Design System",
-        category: "Design Systems",
+        title: "StartupCan.ch",
+        category: "Online Community",
         description:
-          "Built a comprehensive design system - tokens, component library, and contribution guidelines - adopted across 14 product teams, cutting time-to-design by 60% organization-wide.",
-        tags: ["Design Systems", "Tokens", "Figma", "Documentation"],
+          "Built a platform to connect Swiss startup founders for better information and communication.",
+        tags: ["WordPress", "Prototyping","Usability Testing"],
         emoji: "🧩",
         color: "#fce4ec",
         link: "#",
