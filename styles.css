@@ -173,8 +173,8 @@ ul {
 .hero {
   min-height: calc(100vh - 65px);
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 2rem;
+  grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
+  gap: clamp(2.4rem, 5vw, 5rem);
   align-items: center;
   padding: 4rem 5%;
   background: linear-gradient(135deg, #fff 0%, #f0ece6 100%);
@@ -182,10 +182,12 @@ ul {
 
 .hero__content {
   max-width: 640px;
+  padding-right: clamp(0.4rem, 1.8vw, 1.8rem);
 }
 
 .hero__media {
   justify-self: end;
+  padding-left: clamp(0.2rem, 1.2vw, 1rem);
 }
 
 .hero__photo {
@@ -500,12 +502,13 @@ ul {
 @media (max-width: 700px) {
   .hero {
     grid-template-columns: 1fr;
-    gap: 1.4rem;
+    gap: 1.2rem;
     text-align: left;
   }
 
   .hero__media {
     justify-self: start;
+    padding-left: 0;
   }
 
   .hero__photo {

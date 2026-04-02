@@ -127,6 +127,50 @@ window.PORTFOLIO_CONTENT = {
         color: "#fff3e5",
         repo: "https://github.com/linsharon/course-design-copilot",
       },
+      {
+        id: 3,
+        title: "Paper Structurer",
+        category: "Academic Writing",
+        description:
+          "A writing helper that turns notes and references into structured article outlines with reusable templates.",
+        tags: ["Writing", "Structure", "Template"],
+        emoji: "📝",
+        color: "#f0f7ff",
+        repo: "https://github.com/linsharon/paper-structurer",
+      },
+      {
+        id: 4,
+        title: "Data Storyboard Kit",
+        category: "Research Communication",
+        description:
+          "A visual planning kit that helps convert findings into storytelling flows for reports and presentations.",
+        tags: ["Data Storytelling", "Visualization", "Communication"],
+        emoji: "📊",
+        color: "#eefcf2",
+        repo: "https://github.com/linsharon/data-storyboard-kit",
+      },
+      {
+        id: 5,
+        title: "Interview Insight Mapper",
+        category: "UX Research",
+        description:
+          "A lightweight analysis tool for coding interview transcripts and building insight clusters quickly.",
+        tags: ["Qualitative Analysis", "Coding", "Synthesis"],
+        emoji: "🎤",
+        color: "#fff7ec",
+        repo: "https://github.com/linsharon/interview-insight-mapper",
+      },
+      {
+        id: 6,
+        title: "LMS Experience Auditor",
+        category: "Platform QA",
+        description:
+          "An automated checklist and scoring utility for auditing learner journey quality inside LMS platforms.",
+        tags: ["LMS", "UX Audit", "Quality"],
+        emoji: "🧭",
+        color: "#f7f0ff",
+        repo: "https://github.com/linsharon/lms-experience-auditor",
+      },
     ],
   },
   services: {
@@ -173,11 +217,91 @@ window.PORTFOLIO_CONTENT = {
           duration: "Half-day or full-day options.",
         },
       },
+      {
+        id: 3,
+        title: "Academic Writing Clinic",
+        category: "Writing Support",
+        description:
+          "Hands-on support for article framing, argument clarity, and revision strategy for publication.",
+        tags: ["Manuscript", "Revision", "Journal Strategy"],
+        emoji: "✍️",
+        color: "#eef5ff",
+        deliverables: [
+          "Section-by-section feedback",
+          "Argument and structure optimization",
+          "Revision roadmap with priorities",
+        ],
+        details: {
+          audience: "Researchers preparing journal manuscripts.",
+          format: "Online review + coaching call.",
+          duration: "2-3 week support cycle.",
+        },
+      },
+      {
+        id: 4,
+        title: "UX Audit for Learning Platforms",
+        category: "UX Evaluation",
+        description:
+          "Comprehensive UX review for course platforms to improve learner flow, engagement, and completion.",
+        tags: ["Heuristic Review", "Accessibility", "Learner Journey"],
+        emoji: "🔍",
+        color: "#edfdf7",
+        deliverables: [
+          "Annotated issue list",
+          "Priority matrix for fixes",
+          "Redesign recommendations",
+        ],
+        details: {
+          audience: "EdTech teams and university teaching units.",
+          format: "Audit report + debrief session.",
+          duration: "1-2 weeks depending on scope.",
+        },
+      },
+      {
+        id: 5,
+        title: "AI Workflow Coaching",
+        category: "Coaching",
+        description:
+          "Practical coaching to integrate AI tools into daily research and teaching workflows effectively.",
+        tags: ["AI Adoption", "Workflow Design", "Productivity"],
+        emoji: "🤖",
+        color: "#fff3f8",
+        deliverables: [
+          "Current workflow diagnosis",
+          "Customized AI playbook",
+          "Implementation checkpoints",
+        ],
+        details: {
+          audience: "Faculty members and research professionals.",
+          format: "1:1 or small group coaching online.",
+          duration: "4-session package.",
+        },
+      },
+      {
+        id: 6,
+        title: "Digital Course Experience Sprint",
+        category: "Service Design",
+        description:
+          "A focused sprint to redesign one course or module into a clearer and more engaging digital experience.",
+        tags: ["Course Redesign", "Experience Mapping", "Prototype"],
+        emoji: "🚀",
+        color: "#f7f2ff",
+        deliverables: [
+          "Experience blueprint",
+          "Improved activity and content flow",
+          "Prototype of key screens",
+        ],
+        details: {
+          audience: "Instructors, course teams, and instructional designers.",
+          format: "Collaborative sprint workshop.",
+          duration: "5-10 working days.",
+        },
+      },
     ],
   },
   contact: {
     copy:
       "Whether you have a project in mind or just want to chat about design and research, feel free to reach out.",
-    email: "hello@jingjinglin.design",
+    email: "pandalinjingjing@gmail.com",
   },
 };
