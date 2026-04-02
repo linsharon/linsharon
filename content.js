@@ -8,24 +8,24 @@ window.PORTFOLIO_CONTENT = {
   profile: {
     name: "Dr. Jingjing Lin",
     logo: "ResearchIC",
-    role: "User Experience Designer",
+    role: "Digital User Experience Designer",
     tagline:
-      "I craft research-driven, human-centered digital experiences that delight users and move business metrics.",
+      "I craft AI-driven, human-centered digital tools and platforms that delight users in Learning, Research, and Knowledge Service Scenarios.",
   },
   about: {
     bio: [
-      "I'm a UX researcher and designer with a background in cognitive science and human-computer interaction. My practice spans the full design lifecycle - from user research and journey mapping to interaction design, prototyping, and usability testing.",
-      "I hold a Ph.D. in Information Science and have shipped products used by millions of people across healthcare, education, and enterprise software.",
+      "I'm a digital UX designer with a background in IT in Education and Online Communication Science. My practice spans the design lifecycle - from user research and journey mapping to interaction design, prototyping, and usability testing.",
+      "I hold a Ph.D. and worked for 10+ years in academia (Hong Kong, Switzerland, Japan), where I have shipped a variety of platform products used by global users.",
     ],
     skills: [
       "User Research & Interviews",
-      "Interaction Design",
+      "UX Design",
       "Wireframing & Prototyping",
       "Usability Testing",
-      "Figma / Sketch / Adobe XD",
-      "Design Systems",
-      "Accessibility (WCAG 2.1)",
-      "Agile & Design Sprints",
+      "Moodle / WordPress / Articulate",
+      "Learning Management Systems",
+      "Claude / GitHub / ChatGPT",
+      "Vibe Coding",
     ],
   },
   projects: {
