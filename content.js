@@ -115,6 +115,7 @@ window.PORTFOLIO_CONTENT = {
         emoji: "🧪",
         color: "#e6f4ff",
         repo: "https://github.com/linsharon/second-brain",
+        preview: "https://second-brain.vercel.app",
       },
       {
         id: 2,
@@ -126,6 +127,7 @@ window.PORTFOLIO_CONTENT = {
         emoji: "🎓",
         color: "#fff3e5",
         repo: "https://github.com/linsharon/course-design-copilot",
+        preview: "https://course-design-copilot.vercel.app",
       },
       {
         id: 3,
@@ -137,6 +139,7 @@ window.PORTFOLIO_CONTENT = {
         emoji: "📝",
         color: "#f0f7ff",
         repo: "https://github.com/linsharon/paper-structurer",
+        preview: "https://paper-structurer.vercel.app",
       },
       {
         id: 4,
@@ -148,6 +151,7 @@ window.PORTFOLIO_CONTENT = {
         emoji: "📊",
         color: "#eefcf2",
         repo: "https://github.com/linsharon/data-storyboard-kit",
+        preview: "https://data-storyboard-kit.vercel.app",
       },
       {
         id: 5,
@@ -159,6 +163,7 @@ window.PORTFOLIO_CONTENT = {
         emoji: "🎤",
         color: "#fff7ec",
         repo: "https://github.com/linsharon/interview-insight-mapper",
+        preview: "https://interview-insight-mapper.vercel.app",
       },
       {
         id: 6,
@@ -170,6 +175,7 @@ window.PORTFOLIO_CONTENT = {
         emoji: "🧭",
         color: "#f7f0ff",
         repo: "https://github.com/linsharon/lms-experience-auditor",
+        preview: "https://lms-experience-auditor.vercel.app",
       },
     ],
   },
