@@ -119,15 +119,15 @@ window.PORTFOLIO_CONTENT = {
       },
       {
         id: 2,
-        title: "Course Design Copilot",
-        category: "Learning Design",
+        title: "Research Workspace",
+        category: "Research Workflow",
         description:
-          "A practical toolkit to generate course blueprints, activity plans, and assessment drafts for online teaching.",
-        tags: ["Instructional Design", "LMS", "Automation"],
+          "A web tool to guide early-stage research students in their activities of reading and writing research papers.",
+        tags: ["Scientific Reading", "Scientific Writing", "Research Tools"],
         emoji: "🎓",
         color: "#fff3e5",
-        repo: "https://github.com/linsharon/course-design-copilot",
-        preview: "https://course-design-copilot.vercel.app",
+        repo: "https://github.com/linsharon/researchworkspace",
+        preview: "https://researchworkspace.vercel.app",
       },
       {
         id: 3,
