@@ -9,11 +9,12 @@
   <body>
     <!-- Navigation -->
     <nav class="nav">
-      <div class="nav__logo">JL</div>
+      <div class="nav__logo" id="nav-logo">JL</div>
       <ul class="nav__links">
         <li><a href="#about">About</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li><a href="#" id="admin-open">Admin</a></li>
       </ul>
     </nav>
 
@@ -21,12 +22,9 @@
     <header class="hero">
       <div class="hero__content">
         <p class="hero__greeting">Hello, I'm</p>
-        <h1 class="hero__name">Dr. Jingjing Lin</h1>
-        <p class="hero__title">User Experience Designer</p>
-        <p class="hero__subtitle">
-          I craft research‑driven, human‑centred digital experiences that
-          delight users and move business metrics.
-        </p>
+        <h1 class="hero__name" id="profile-name">Dr. Jingjing Lin</h1>
+        <p class="hero__title" id="profile-role">User Experience Designer</p>
+        <p class="hero__subtitle" id="profile-tagline"></p>
         <a href="#projects" class="btn btn--primary">View My Work</a>
       </div>
     </header>
@@ -36,29 +34,8 @@
       <div class="container">
         <h2 class="section__title">About Me</h2>
         <div class="about__grid">
-          <div class="about__text">
-            <p>
-              I'm a UX researcher and designer with a background in cognitive
-              science and human–computer interaction. My practice spans the full
-              design lifecycle — from user research and journey mapping to
-              interaction design, prototyping, and usability testing.
-            </p>
-            <p>
-              I hold a Ph.D. in Information Science and have shipped products
-              used by millions of people across healthcare, education, and
-              enterprise software.
-            </p>
-          </div>
-          <ul class="about__skills">
-            <li>User Research &amp; Interviews</li>
-            <li>Interaction Design</li>
-            <li>Wireframing &amp; Prototyping</li>
-            <li>Usability Testing</li>
-            <li>Figma · Sketch · Adobe XD</li>
-            <li>Design Systems</li>
-            <li>Accessibility (WCAG 2.1)</li>
-            <li>Agile &amp; Design Sprints</li>
-          </ul>
+          <div class="about__text" id="about-bio"></div>
+          <ul class="about__skills" id="about-skills"></ul>
         </div>
       </div>
     </section>
@@ -67,10 +44,7 @@
     <section id="projects" class="projects section section--alt">
       <div class="container">
         <h2 class="section__title">Selected Projects</h2>
-        <p class="section__subtitle">
-          A curated set of UX case studies spanning research, design, and
-          evaluation.
-        </p>
+        <p class="section__subtitle" id="projects-subtitle"></p>
 
         <div class="projects__grid" id="projects-grid">
           <!-- Cards are injected by projects.js -->
@@ -82,11 +56,8 @@
     <section id="contact" class="contact section">
       <div class="container contact__inner">
         <h2 class="section__title">Get In Touch</h2>
-        <p class="contact__copy">
-          Whether you have a project in mind or just want to chat about design
-          and research, feel free to reach out.
-        </p>
-        <a href="mailto:hello@jingjinglin.design" class="btn btn--primary"
+        <p class="contact__copy" id="contact-copy"></p>
+        <a href="mailto:hello@jingjinglin.design" class="btn btn--primary" id="contact-email"
           >Say Hello</a
         >
       </div>
@@ -94,10 +65,41 @@
 
     <!-- Footer -->
     <footer class="footer">
-      <p>© <span id="year"></span> Dr. Jingjing Lin · All rights reserved.</p>
+      <p>© <span id="year"></span> <span id="profile-name-footer">Dr. Jingjing Lin</span> · All rights reserved.</p>
     </footer>
 
+    <div class="admin-modal" id="admin-modal" aria-hidden="true">
+      <div class="admin-modal__backdrop" id="admin-close"></div>
+      <div class="admin-modal__panel" role="dialog" aria-modal="true" aria-labelledby="admin-title">
+        <h3 id="admin-title">Admin Panel</h3>
+
+        <form id="admin-login-form" class="admin-form">
+          <label for="admin-username">Username</label>
+          <input id="admin-username" type="text" autocomplete="username" required />
+
+          <label for="admin-password">Password</label>
+          <input id="admin-password" type="password" autocomplete="current-password" required />
+
+          <button type="submit" class="btn btn--primary">Login</button>
+          <p class="admin-hint">Default account is set in content.js under ADMIN_CONFIG.</p>
+        </form>
+
+        <section id="admin-editor" class="admin-editor" hidden>
+          <p class="admin-editor__help">Edit JSON below to update the entire page content.</p>
+          <textarea id="admin-json" spellcheck="false"></textarea>
+          <div class="admin-editor__actions">
+            <button id="admin-save" class="btn btn--primary">Save & Refresh</button>
+            <button id="admin-reset" class="btn btn--outline" type="button">Reset to Repo Defaults</button>
+            <button id="admin-logout" class="btn btn--outline" type="button">Logout</button>
+          </div>
+          <p id="admin-message" class="admin-message"></p>
+        </section>
+      </div>
+    </div>
+
+    <script src="content.js"></script>
     <script src="projects.js"></script>
+    <script src="admin.js"></script>
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
     </script>

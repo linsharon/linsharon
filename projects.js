@@ -1,77 +1,48 @@
 /**
  * projects.js
- * Defines the list of UX design projects and dynamically renders
- * project cards into the #projects-grid container.
+ * Renders portfolio content from window.PORTFOLIO_CONTENT (defined in content.js).
  */
 
-const projects = [
-  {
-    id: 1,
-    title: "HealthBridge Patient Portal",
-    category: "Healthcare UX",
-    description:
-      "Redesigned a patient‑facing health portal used by 1.2 million users. Led end‑to‑end research, journey mapping, and iterative prototyping that reduced appointment‑booking errors by 38%.",
-    tags: ["User Research", "Journey Mapping", "Figma", "Usability Testing"],
-    emoji: "🏥",
-    color: "#e8f5e9",
-    link: "#",
+const FALLBACK_CONTENT = {
+  profile: {
+    name: "Dr. Jingjing Lin",
+    logo: "JL",
+    role: "User Experience Designer",
+    tagline:
+      "I craft research-driven, human-centered digital experiences that delight users and move business metrics.",
   },
-  {
-    id: 2,
-    title: "EduPath Learning Dashboard",
-    category: "Education Technology",
-    description:
-      "Designed an adaptive learning dashboard for K‑12 students. Conducted contextual inquiry with 60 students and teachers, resulting in a 45% improvement in task‑completion rate during usability tests.",
-    tags: ["Contextual Inquiry", "Interaction Design", "Sketch", "A/B Testing"],
-    emoji: "📚",
-    color: "#e3f2fd",
-    link: "#",
+  about: {
+    bio: [
+      "I'm a UX researcher and designer with a background in cognitive science and human-computer interaction.",
+      "I hold a Ph.D. in Information Science and have shipped products used by millions of people.",
+    ],
+    skills: ["User Research", "Interaction Design", "Usability Testing"],
   },
-  {
-    id: 3,
-    title: "Nexus Enterprise Design System",
-    category: "Design Systems",
-    description:
-      "Built a comprehensive design system — tokens, component library, and contribution guidelines — adopted across 14 product teams, cutting time‑to‑design by 60% organisation‑wide.",
-    tags: ["Design Systems", "Tokens", "Figma", "Documentation"],
-    emoji: "🧩",
-    color: "#fce4ec",
-    link: "#",
+  projects: {
+    subtitle: "A curated set of UX case studies.",
+    items: [],
   },
-  {
-    id: 4,
-    title: "Wayfinder Navigation App",
-    category: "Mobile UX",
-    description:
-      "Created UX for an indoor navigation app for large public venues. Ran wayfinding studies with 80+ participants to uncover mental models and translate them into intuitive map interactions.",
-    tags: ["Mobile Design", "Wayfinding", "Prototype Testing", "Adobe XD"],
-    emoji: "🗺️",
-    color: "#fff8e1",
-    link: "#",
+  contact: {
+    copy: "Feel free to reach out.",
+    email: "hello@example.com",
   },
-  {
-    id: 5,
-    title: "ClearVoice Accessibility Audit",
-    category: "Accessibility",
-    description:
-      "Conducted a WCAG 2.1 AA audit and remediation plan for a government services website, identifying 120+ issues and delivering annotated wireframes for an accessible redesign.",
-    tags: ["Accessibility", "WCAG 2.1", "Audit", "Remediation"],
-    emoji: "♿",
-    color: "#f3e5f5",
-    link: "#",
-  },
-  {
-    id: 6,
-    title: "PulseFinance Onboarding Flow",
-    category: "FinTech UX",
-    description:
-      "Overhauled a fintech app's onboarding journey through diary studies and cognitive walkthroughs, reducing drop‑off at sign‑up by 52% and increasing 30‑day retention by 28%.",
-    tags: ["Diary Study", "Onboarding", "Cognitive Walkthrough", "Figma"],
-    emoji: "💳",
-    color: "#e0f2f1",
-    link: "#",
-  },
-];
+};
+
+const STORAGE_KEY = "portfolioContent";
+
+function getStoredContent() {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (!raw) return null;
+
+  try {
+    const parsed = JSON.parse(raw);
+    return parsed && typeof parsed === "object" ? parsed : null;
+  } catch (_error) {
+    return null;
+  }
+}
+
+const content = getStoredContent() || window.PORTFOLIO_CONTENT || FALLBACK_CONTENT;
 
 /**
  * Render a single project card element.
@@ -106,6 +77,41 @@ function createCard(project) {
 }
 
 /**
+ * Apply profile/about/contact text content.
+ */
+function applyContent() {
+  const setText = (id, value) => {
+    const el = document.getElementById(id);
+    if (el && typeof value === "string") {
+      el.textContent = value;
+    }
+  };
+
+  setText("nav-logo", content.profile.logo);
+  setText("profile-name", content.profile.name);
+  setText("profile-name-footer", content.profile.name);
+  setText("profile-role", content.profile.role);
+  setText("profile-tagline", content.profile.tagline);
+  setText("projects-subtitle", content.projects.subtitle);
+  setText("contact-copy", content.contact.copy);
+
+  const aboutBio = document.getElementById("about-bio");
+  if (aboutBio && Array.isArray(content.about.bio)) {
+    aboutBio.innerHTML = content.about.bio.map((line) => `<p>${line}</p>`).join("");
+  }
+
+  const aboutSkills = document.getElementById("about-skills");
+  if (aboutSkills && Array.isArray(content.about.skills)) {
+    aboutSkills.innerHTML = content.about.skills.map((skill) => `<li>${skill}</li>`).join("");
+  }
+
+  const contactEmail = document.getElementById("contact-email");
+  if (contactEmail && content.contact.email) {
+    contactEmail.href = `mailto:${content.contact.email}`;
+  }
+}
+
+/**
  * Render all project cards into the grid.
  */
 function renderProjects() {
@@ -113,10 +119,12 @@ function renderProjects() {
   if (!grid) return;
 
   const fragment = document.createDocumentFragment();
-  projects.forEach((project) => {
+  const items = Array.isArray(content.projects.items) ? content.projects.items : [];
+  items.forEach((project) => {
     fragment.appendChild(createCard(project));
   });
   grid.appendChild(fragment);
 }
 
+applyContent();
 renderProjects();
