@@ -1,4 +1,4 @@
-# ResearchIC.com
+# [ResearchIC.com](https://researchic.com/)
 It is a portfolio page of Dr. Jingjing Lin.
 
 ## About the page
