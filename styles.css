@@ -172,7 +172,9 @@ ul {
 =================================================== */
 .hero {
   min-height: calc(100vh - 65px);
-  display: flex;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2rem;
   align-items: center;
   padding: 4rem 5%;
   background: linear-gradient(135deg, #fff 0%, #f0ece6 100%);
@@ -180,6 +182,19 @@ ul {
 
 .hero__content {
   max-width: 640px;
+}
+
+.hero__media {
+  justify-self: end;
+}
+
+.hero__photo {
+  width: min(360px, 42vw);
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 22px;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-hover);
 }
 
 .hero__greeting {
@@ -375,6 +390,20 @@ ul {
    Responsive
 =================================================== */
 @media (max-width: 700px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+    text-align: left;
+  }
+
+  .hero__media {
+    justify-self: start;
+  }
+
+  .hero__photo {
+    width: min(280px, 72vw);
+  }
+
   .about__grid {
     grid-template-columns: 1fr;
     gap: 2rem;

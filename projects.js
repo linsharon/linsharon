@@ -81,6 +81,18 @@ function applyContent() {
   setText("projects-subtitle", content.projects.subtitle);
   setText("contact-copy", content.contact.copy);
 
+  const profilePhoto = document.getElementById("profile-photo");
+  const heroMedia = document.getElementById("hero-media");
+  if (profilePhoto && content.profile.photo) {
+    profilePhoto.src = content.profile.photo;
+    profilePhoto.alt = `Portrait of ${content.profile.name}`;
+  }
+  if (profilePhoto && heroMedia) {
+    profilePhoto.addEventListener("error", () => {
+      heroMedia.style.display = "none";
+    });
+  }
+
   const aboutBio = document.getElementById("about-bio");
   if (aboutBio && Array.isArray(content.about.bio)) {
     aboutBio.innerHTML = content.about.bio.map((line) => `<p>${line}</p>`).join("");
