@@ -186,17 +186,34 @@ ul {
 }
 
 .hero__media {
+  position: relative;
   justify-self: end;
   padding-left: clamp(0.2rem, 1.2vw, 1rem);
 }
 
+.hero__media::before {
+  content: "";
+  position: absolute;
+  width: min(430px, 50vw);
+  aspect-ratio: 1 / 1;
+  right: -10%;
+  top: -8%;
+  border-radius: 32px;
+  background: radial-gradient(circle at 30% 30%, rgba(92, 79, 214, 0.18), rgba(92, 79, 214, 0));
+  z-index: 0;
+  pointer-events: none;
+}
+
 .hero__photo {
+  position: relative;
+  z-index: 1;
   width: min(360px, 42vw);
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  border-radius: 22px;
-  border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-hover);
+  object-position: center 20%;
+  border-radius: 26px;
+  border: 6px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 22px 50px rgba(24, 27, 54, 0.22), 0 8px 18px rgba(92, 79, 214, 0.2);
 }
 
 .hero__greeting {
@@ -509,6 +526,12 @@ ul {
   .hero__media {
     justify-self: start;
     padding-left: 0;
+  }
+
+  .hero__media::before {
+    width: min(320px, 78vw);
+    right: -7%;
+    top: -6%;
   }
 
   .hero__photo {

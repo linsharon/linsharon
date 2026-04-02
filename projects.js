@@ -160,6 +160,19 @@ function applyContent() {
   }
   if (profilePhoto && heroMedia) {
     profilePhoto.addEventListener("error", () => {
+      const currentSrc = profilePhoto.getAttribute("src") || "";
+      if (currentSrc.endsWith(".jpg")) {
+        profilePhoto.src = currentSrc.replace(/\.jpg$/, ".png");
+        return;
+      }
+      if (currentSrc.endsWith(".jpeg")) {
+        profilePhoto.src = currentSrc.replace(/\.jpeg$/, ".png");
+        return;
+      }
+      if (currentSrc.endsWith(".png")) {
+        profilePhoto.src = currentSrc.replace(/\.png$/, ".jpg");
+        return;
+      }
       heroMedia.style.display = "none";
     });
   }

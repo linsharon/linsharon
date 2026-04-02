@@ -9,7 +9,7 @@ window.PORTFOLIO_CONTENT = {
     name: "Dr. Jingjing Lin",
     logo: "ResearchIC",
     role: "Digital User Experience Designer",
-    photo: "profile-photo.png",
+    photo: "profile-photo.jpg",
     tagline:
       "I craft AI-driven, human-centered digital tools and services that delight users in Learning, Research, and Knowledge Service Scenarios.",
   },
