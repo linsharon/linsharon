@@ -30,6 +30,8 @@ const FALLBACK_CONTENT = {
 
 const content = window.PORTFOLIO_CONTENT || FALLBACK_CONTENT;
 
+const TOOL_PREVIEW_STORAGE_KEY_PREFIX = "tool-preview-url-";
+
 /**
  * Render a single project card element.
  * @param {Object} project
@@ -78,6 +80,8 @@ function createToolCard(tool) {
     : "";
 
   const repoHref = tool.repo || "#";
+  const previewHref = tool.preview || "#";
+  const hasPreviewUrl = previewHref !== "#";
 
   card.innerHTML = `
     <div class="card__image--placeholder" style="background-color: ${tool.color || "#f0f0f0"};">
@@ -88,13 +92,71 @@ function createToolCard(tool) {
       <h3 class="card__title">${tool.title || "Untitled Tool"}</h3>
       <p class="card__description">${tool.description || ""}</p>
       <div class="card__tags">${tagsHTML}</div>
-      <a href="${repoHref}" target="_blank" rel="noopener noreferrer" class="card__link" aria-label="View repository for ${tool.title}">
-        View Repository →
-      </a>
+      <div class="card__links">
+        <a href="${repoHref}" target="_blank" rel="noopener noreferrer" class="card__link" aria-label="View repository for ${tool.title}">
+          View Repository →
+        </a>
+        <a href="${previewHref}" target="_blank" rel="noopener noreferrer" class="card__link tool-preview-link" data-tool-id="${tool.id}" data-tool-title="${tool.title || "Untitled Tool"}" data-preview-url="${previewHref}" aria-label="Preview ${tool.title || "Untitled Tool"} on Vercel">
+          ${hasPreviewUrl ? "Preview →" : "Preview (Set URL) →"}
+        </a>
+      </div>
     </div>
   `;
 
   return card;
+}
+
+/**
+ * Ask for and open a preview URL for a tool card.
+ */
+function initToolPreviewLinks() {
+  const grid = document.getElementById("tools-grid");
+  if (!grid) return;
+
+  grid.addEventListener("click", (event) => {
+    const link = event.target.closest(".tool-preview-link");
+    if (!link) return;
+
+    event.preventDefault();
+
+    const toolId = link.getAttribute("data-tool-id");
+    const toolTitle = link.getAttribute("data-tool-title") || "this tool";
+    const defaultUrl = link.getAttribute("data-preview-url") || "";
+    const storedUrl = toolId
+      ? window.localStorage.getItem(`${TOOL_PREVIEW_STORAGE_KEY_PREFIX}${toolId}`) || ""
+      : "";
+
+    const currentUrl = storedUrl || (defaultUrl !== "#" ? defaultUrl : "");
+    const input = window.prompt(`Enter Vercel preview URL for ${toolTitle}:`, currentUrl);
+
+    if (input === null) return;
+
+    const normalized = input.trim();
+    if (!normalized) return;
+
+    let parsedUrl;
+    try {
+      parsedUrl = new URL(normalized);
+    } catch (_error) {
+      window.alert("Please enter a valid URL, e.g. https://your-tool.vercel.app");
+      return;
+    }
+
+    if (parsedUrl.protocol !== "https:" && parsedUrl.protocol !== "http:") {
+      window.alert("Preview URL must start with http:// or https://");
+      return;
+    }
+
+    if (toolId) {
+      window.localStorage.setItem(`${TOOL_PREVIEW_STORAGE_KEY_PREFIX}${toolId}`, parsedUrl.toString());
+    }
+
+    link.setAttribute("href", parsedUrl.toString());
+    link.setAttribute("data-preview-url", parsedUrl.toString());
+    link.textContent = "Preview →";
+
+    window.open(parsedUrl.toString(), "_blank", "noopener,noreferrer");
+  });
 }
 
 /**
@@ -241,4 +303,5 @@ function renderServices() {
 applyContent();
 renderProjects();
 renderTools();
+initToolPreviewLinks();
 renderServices();

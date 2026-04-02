@@ -355,6 +355,13 @@ ul {
   margin-bottom: 1.2rem;
 }
 
+.card__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
 .tag {
   font-size: 0.75rem;
   font-weight: 600;
@@ -365,7 +372,6 @@ ul {
 }
 
 .card__link {
-  align-self: flex-start;
   font-size: 0.9rem;
   font-weight: 600;
   color: var(--color-primary);

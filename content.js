@@ -107,14 +107,14 @@ window.PORTFOLIO_CONTENT = {
     items: [
       {
         id: 1,
-        title: "ResearchIC Assistant",
-        category: "AI Research Tool",
+        title: "Second-Brain",
+        category: "Mindmapping Tools",
         description:
-          "An AI-powered assistant for literature scanning, idea framing, and workflow support for academic projects.",
-        tags: ["LLM", "Research Workflow", "Prompt Engineering"],
+          "A mindmapping tool for creating nodes of concepts and lines of relationships in order to build a knowledge map individually or collaboratively, potentially with AI.",
+        tags: ["LLM", "Research Workflow", "Mindmapping"],
         emoji: "🧪",
         color: "#e6f4ff",
-        repo: "https://github.com/linsharon/researchic-assistant",
+        repo: "https://github.com/linsharon/second-brain",
       },
       {
         id: 2,
