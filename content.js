@@ -11,7 +11,7 @@ window.PORTFOLIO_CONTENT = {
     role: "Digital User Experience Designer",
     photo: "profile-photo.png",
     tagline:
-      "I craft AI-driven, human-centered digital tools and platforms that delight users in Learning, Research, and Knowledge Service Scenarios.",
+      "I craft AI-driven, human-centered digital tools and services that delight users in Learning, Research, and Knowledge Service Scenarios.",
   },
   about: {
     bio: [
@@ -98,6 +98,80 @@ window.PORTFOLIO_CONTENT = {
         emoji: "💳",
         color: "#e0f2f1",
         link: "#",
+      },
+    ],
+  },
+  tools: {
+    subtitle:
+      "Tools currently in development. Click to view repository and progress.",
+    items: [
+      {
+        id: 1,
+        title: "ResearchIC Assistant",
+        category: "AI Research Tool",
+        description:
+          "An AI-powered assistant for literature scanning, idea framing, and workflow support for academic projects.",
+        tags: ["LLM", "Research Workflow", "Prompt Engineering"],
+        emoji: "🧪",
+        color: "#e6f4ff",
+        repo: "https://github.com/linsharon/researchic-assistant",
+      },
+      {
+        id: 2,
+        title: "Course Design Copilot",
+        category: "Learning Design",
+        description:
+          "A practical toolkit to generate course blueprints, activity plans, and assessment drafts for online teaching.",
+        tags: ["Instructional Design", "LMS", "Automation"],
+        emoji: "🎓",
+        color: "#fff3e5",
+        repo: "https://github.com/linsharon/course-design-copilot",
+      },
+    ],
+  },
+  services: {
+    subtitle:
+      "Current online services for researchers, educators, and academic teams.",
+    items: [
+      {
+        id: 1,
+        title: "Research Consulting",
+        category: "Consulting",
+        description:
+          "1:1 or team consulting for research design, project planning, and publication workflows.",
+        tags: ["Research Strategy", "Proposal", "Publication Planning"],
+        emoji: "🔬",
+        color: "#eefbf0",
+        deliverables: [
+          "Research scope and roadmap",
+          "Method recommendation with rationale",
+          "Action plan for publication milestones",
+        ],
+        details: {
+          audience: "Individual researchers, postdocs, and small academic labs.",
+          format: "Online session + follow-up notes.",
+          duration: "60-90 minutes per session.",
+        },
+      },
+      {
+        id: 2,
+        title: "Research Training Workshops",
+        category: "Training",
+        description:
+          "Live online workshops on AI-assisted research workflows, academic writing, and tool adoption.",
+        tags: ["Workshop", "AI Literacy", "Academic Writing"],
+        emoji: "📘",
+        color: "#f5efff",
+        deliverables: [
+          "Customized workshop outline",
+          "Live guided practice",
+          "Reusable templates and checklist",
+        ],
+        details: {
+          audience: "Universities, research groups, and professional communities.",
+          format: "Remote interactive workshop.",
+          duration: "Half-day or full-day options.",
+        },
       },
     ],
   },
