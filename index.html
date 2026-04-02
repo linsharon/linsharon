@@ -14,7 +14,6 @@
         <li><a href="#about">About</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a href="#" id="admin-open">Admin</a></li>
       </ul>
     </nav>
 
@@ -68,38 +67,8 @@
       <p>© <span id="year"></span> <span id="profile-name-footer">Dr. Jingjing Lin</span> · All rights reserved.</p>
     </footer>
 
-    <div class="admin-modal" id="admin-modal" aria-hidden="true">
-      <div class="admin-modal__backdrop" id="admin-close"></div>
-      <div class="admin-modal__panel" role="dialog" aria-modal="true" aria-labelledby="admin-title">
-        <h3 id="admin-title">Admin Panel</h3>
-
-        <form id="admin-login-form" class="admin-form">
-          <label for="admin-username">Username</label>
-          <input id="admin-username" type="text" autocomplete="username" required />
-
-          <label for="admin-password">Password</label>
-          <input id="admin-password" type="password" autocomplete="current-password" required />
-
-          <button type="submit" class="btn btn--primary">Login</button>
-          <p class="admin-hint">Default account is set in content.js under ADMIN_CONFIG.</p>
-        </form>
-
-        <section id="admin-editor" class="admin-editor" hidden>
-          <p class="admin-editor__help">Edit JSON below to update the entire page content.</p>
-          <textarea id="admin-json" spellcheck="false"></textarea>
-          <div class="admin-editor__actions">
-            <button id="admin-save" class="btn btn--primary">Save & Refresh</button>
-            <button id="admin-reset" class="btn btn--outline" type="button">Reset to Repo Defaults</button>
-            <button id="admin-logout" class="btn btn--outline" type="button">Logout</button>
-          </div>
-          <p id="admin-message" class="admin-message"></p>
-        </section>
-      </div>
-    </div>
-
     <script src="content.js"></script>
     <script src="projects.js"></script>
-    <script src="admin.js"></script>
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
     </script>

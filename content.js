@@ -7,7 +7,7 @@
 window.PORTFOLIO_CONTENT = {
   profile: {
     name: "Dr. Jingjing Lin",
-    logo: "JL",
+    logo: "ResearchIC",
     role: "User Experience Designer",
     tagline:
       "I craft research-driven, human-centered digital experiences that delight users and move business metrics.",
@@ -105,12 +105,4 @@ window.PORTFOLIO_CONTENT = {
       "Whether you have a project in mind or just want to chat about design and research, feel free to reach out.",
     email: "hello@jingjinglin.design",
   },
-};
-
-window.ADMIN_CONFIG = {
-  username: "admin",
-  password: "g4FpN&62Agu^$nue",
-  exposeInProduction: false,
-  productionAccessParam: "adminKey",
-  productionAccessToken: "410c1e62f336d61720988dd1956e4df7a80f4847950b3d0e142af287b2389a31",
 };

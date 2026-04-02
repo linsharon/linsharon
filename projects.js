@@ -28,21 +28,7 @@ const FALLBACK_CONTENT = {
   },
 };
 
-const STORAGE_KEY = "portfolioContent";
-
-function getStoredContent() {
-  const raw = localStorage.getItem(STORAGE_KEY);
-  if (!raw) return null;
-
-  try {
-    const parsed = JSON.parse(raw);
-    return parsed && typeof parsed === "object" ? parsed : null;
-  } catch (_error) {
-    return null;
-  }
-}
-
-const content = getStoredContent() || window.PORTFOLIO_CONTENT || FALLBACK_CONTENT;
+const content = window.PORTFOLIO_CONTENT || FALLBACK_CONTENT;
 
 /**
  * Render a single project card element.
