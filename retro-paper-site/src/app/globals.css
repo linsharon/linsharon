@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fafaf8;
+  --foreground: #1a1816;
+  --accent-subtle: #f3f1ed;
+  --border-light: #e8e6e1;
+  --text-secondary: #666563;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-retro-paper: var(--background);
+
+  --font-academic: var(--font-academic-src);
+  --font-literary: var(--font-literary-src);
+  --font-design: var(--font-design-src);
+
+  --font-sans: var(--font-academic-src);
+  --font-mono: var(--font-design-src);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-academic-src), serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-family: var(--font-academic-src), serif;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 1.875rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  font-family: var(--font-academic-src), serif;
+  margin-bottom: 0.75rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.4;
+  font-family: var(--font-academic-src), serif;
+  margin-bottom: 0.5rem;
+}
+
+h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  font-family: var(--font-academic-src), serif;
+  margin-bottom: 0.25rem;
+}
+
+p {
+  line-height: 1.7;
+  color: var(--foreground);
+}
+
+p + p {
+  margin-top: 0.75rem;
+}
