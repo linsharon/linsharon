@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Caveat, IBM_Plex_Mono } from "next/font/google";
+import { Cormorant_Garamond, Caveat, IBM_Plex_Mono, Nunito } from "next/font/google";
 import "./globals.css";
 
 const academic = Cormorant_Garamond({
@@ -20,6 +20,12 @@ const design = IBM_Plex_Mono({
   weight: ["400", "500", "700"],
 });
 
+const rounded = Nunito({
+  variable: "--font-rounded-src",
+  subsets: ["latin"],
+  weight: ["600", "700", "800"],
+});
+
 export const metadata: Metadata = {
   title: "ResearchIC",
   description: "ResearchIC three-realm website",
@@ -33,7 +39,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${academic.variable} ${literary.variable} ${design.variable} h-full antialiased`}
+      className={`${academic.variable} ${literary.variable} ${design.variable} ${rounded.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

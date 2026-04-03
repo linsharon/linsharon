@@ -8,7 +8,7 @@ import DesignPanel from "@/components/DesignPanel";
 import ContactPanel from "@/components/ContactPanel";
 
 type Lang = "zh" | "en";
-type SectionId = "about" | "researchsmith" | "inovel" | "design";
+type SectionId = "about" | "researchsmith" | "inovel" | "design" | "contact";
 
 export default function Home() {
   const [lang, setLang] = useState<Lang>("zh");
@@ -20,20 +20,27 @@ export default function Home() {
           { id: "about", label: "关于" },
           { id: "researchsmith", label: "研究师" },
           { id: "inovel", label: "私小说作者" },
-          { id: "design", label: "感觉编程者" },
+          { id: "design", label: "氛围编程者" },
+          { id: "contact", label: "联络" },
         ]
       : [
           { id: "about", label: "About" },
           { id: "researchsmith", label: "Researchsmith" },
           { id: "inovel", label: "I-novelist" },
           { id: "design", label: "Designer" },
+          { id: "contact", label: "Contact" },
         ];
 
   const goSection = (id: SectionId) => {
     const el = document.getElementById(id);
+    setMobileMenuOpen(false);
     if (el) {
       el.scrollIntoView({ behavior: "smooth", block: "start" });
-      setMobileMenuOpen(false);
+      return;
+    }
+
+    if (id === "about") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
@@ -41,7 +48,15 @@ export default function Home() {
     <div className="flex min-h-screen flex-col bg-white text-slate-900">
       <header className="sticky top-0 z-50 border-b border-slate-200/60 bg-white/95 px-4 py-3 backdrop-blur-sm sm:px-6 lg:px-8">
         <div className="mx-auto flex max-w-7xl items-center gap-3">
-          <h1 className="font-academic text-[13px] font-normal tracking-[0.08em] text-slate-700 sm:text-[14px]">ResearchIC</h1>
+          <h1>
+            <button
+              type="button"
+              onClick={() => goSection("about")}
+              className="font-rounded text-[20px] font-bold tracking-[0.06em] text-slate-700 transition hover:text-slate-900"
+            >
+              ResearchIC
+            </button>
+          </h1>
 
           <nav className="hidden min-w-0 flex-1 md:block">
             <ul className="flex flex-nowrap items-center justify-end gap-3 overflow-x-auto whitespace-nowrap pr-1 text-[11px] font-medium text-slate-600">

@@ -5,7 +5,7 @@ type INovelPanelProps = {
 };
 
 export default function INovelPanel({ lang }: INovelPanelProps) {
-  const title = lang === "zh" ? "一个学界叛逃者的脱轨记录" : "Derailment Notes of an Academic Defector";
+  const title = lang === "zh" ? "文学利己" : "Towards a better understanding of self via writing.";
   const coverSrc = lang === "zh" ? "/images/image10.png" : "/images/image9.png";
 
   return (
@@ -46,6 +46,14 @@ export default function INovelPanel({ lang }: INovelPanelProps) {
               >
                 Goodreads
               </a>
+              <a
+                className="inline-flex items-center rounded-full border border-green-300/50 bg-green-50/80 px-4 py-2 text-xs font-medium text-green-900 transition hover:bg-green-100"
+                href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA3NTUwNTMwNQ==&action=getalbum&album_id=4441770263470456838#wechat_redirect"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                微信
+              </a>
             </div>
           </div>
         </div>
@@ -66,34 +74,23 @@ export default function INovelPanel({ lang }: INovelPanelProps) {
               <Image src="/images/image11.jpg" alt="Review cover" fill className="object-cover group-hover:scale-105 transition-transform duration-300" sizes="(min-width: 640px) 50vw, 100vw" />
             </div>
             <p className="px-3 pb-3 text-sm font-medium text-slate-900 group-hover:text-slate-950">
-              {lang === "zh" ? "Reading I-novels (Book Reviews)" : "Reading I-novels (Book Reviews)"}
+              {lang === "zh" ? "阅读私小说（书评）" : "Reading I-novels (Book Reviews)"}
             </p>
           </a>
 
-          <div className="rounded-lg border border-slate-200/80 bg-slate-50/50 overflow-hidden">
+          <a
+            className="group rounded-lg border border-slate-200/80 bg-slate-50/50 overflow-hidden transition hover:shadow-md hover:bg-slate-50"
+            href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA3NTUwNTMwNQ==&action=getalbum&album_id=4456203616781336585#wechat_redirect"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <div className="relative mb-3 h-32 w-full overflow-hidden rounded-t-lg border-b border-slate-200">
-              <Image src="/images/image00.jpg" alt="Serial cover" fill className="object-cover" sizes="(min-width: 640px) 50vw, 100vw" />
+              <Image src="/images/image00.jpg" alt="Creative I-novel cover" fill className="object-cover group-hover:scale-105 transition-transform duration-300" sizes="(min-width: 640px) 50vw, 100vw" />
             </div>
-            <div className="px-3 pb-3">
-              <p className="text-sm font-medium text-slate-900 mb-2">
-                {lang === "zh" ? "Lynn's I-novels (Creative Writing)" : "Lynn's I-novels (Creative Writing)"}
-              </p>
-              <ul className="space-y-1">
-                {[1, 2, 3, 4].map((n) => (
-                  <li key={n}>
-                    <a
-                      href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA3NTUwNTMwNQ==&action=getalbum&album_id=4456203616781336585#wechat_redirect"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs text-slate-700 hover:text-slate-900 underline underline-offset-1 decoration-transparent hover:decoration-slate-400 transition"
-                    >
-                      {lang === "zh" ? `私小说${n}` : `I-novel ${n}`}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+            <p className="px-3 pb-3 text-sm font-medium text-slate-900 group-hover:text-slate-950">
+              {lang === "zh" ? "西西的私小说（原创）" : "Lynn's I-novels (Creative Writing)"}
+            </p>
+          </a>
         </div>
       </article>
     </section>

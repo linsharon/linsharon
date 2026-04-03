@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 
 const PROJECT = {
@@ -193,7 +194,7 @@ function ProgressBar({ label, percent, detail }: ProgressBarProps) {
       <div className="h-2 w-full overflow-hidden rounded-full bg-slate-200/80">
         <div
           className="h-full rounded-full bg-slate-900 transition-all duration-500 ease-out"
-          style={{ width: `${normalized}%` }}
+          style={{ width: `${normalized.toFixed(2)}%` }}
           aria-hidden="true"
         />
       </div>
@@ -210,27 +211,79 @@ export default function BookProgress({ lang }: BookProgressProps) {
   const chapterPercent = calcPercent(PROJECT.currentChapter, PROJECT.totalChapters);
   const coverSrc = "/images/image2.png";
   const researchServicePanels = lang === "zh" ? RESEARCH_SERVICE_PANELS_ZH : RESEARCH_SERVICE_PANELS_EN;
+  const [openResearchPanels, setOpenResearchPanels] = useState<string[]>([]);
+
+  const expandAllResearchPanels = () => {
+    setOpenResearchPanels(researchServicePanels.map((panel) => panel.title));
+  };
+
+  const collapseAllResearchPanels = () => {
+    setOpenResearchPanels([]);
+  };
+
+  const toggleResearchPanel = (title: string, isOpen: boolean) => {
+    setOpenResearchPanels((prev) => {
+      if (isOpen) {
+        if (prev.includes(title)) {
+          return prev;
+        }
+
+        return [...prev, title];
+      }
+
+      return prev.filter((item) => item !== title);
+    });
+  };
 
   return (
     <section className="space-y-8 font-serif">
       <section id="about" className="rounded-lg border border-slate-200/50 bg-white p-5 scroll-mt-24">
         <h3 className="mb-4 text-base font-semibold tracking-tight text-slate-900">{lang === "zh" ? "关于" : "About"}</h3>
-        <div className="flex items-center gap-4">
+        <div className="flex items-start gap-4">
           <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full border border-slate-200/80">
             <Image src="/images/profile-photo.jpg" alt="Dr. Jingjing Lin" fill className="object-cover" sizes="80px" />
           </div>
-          <p className="text-sm leading-relaxed text-slate-700">
-            {lang === "zh"
-              ? "我是林晶晶博士（西西弗斯林），致力于打造以人为本、人工智能驱动的数字工具和服务，为学习、研究和知识管理领域的用户带来愉悦的体验。"
-              : "I am Dr. Jingjing Lin (pen-name: Sisyphus Lynn). I craft AI-driven, human-centered digital tools and services that delight users in Learning, Research, and Knowledge Management Scenarios."}
-          </p>
+          {lang === "zh" ? (
+            <div className="space-y-3 text-sm leading-relaxed text-slate-700">
+              <p>我是西西弗斯林，这里是一个学界遁逃者的“三界”。用学术利他，用文学利己，用设计显影。</p>
+              <ul className="space-y-2">
+                <li>
+                  <span className="font-semibold text-slate-900">学术利他：</span>
+                  我用过往15年学术研究的职业经验积累的知识和技能进行价值变现。不再为体制和机构写作，而是为具体的、挣扎的个体（硕博生）写作，为他们提供在学术界生存和发展的培训和咨询。这让我在财务上保持体面，在社会关系上保持活跃。
+                </li>
+                <li>
+                  <span className="font-semibold text-slate-900">文学利己：</span>
+                  我的“精神避难所”和“心境手术室”。通过私小说的写作形式，直观坦诚地凝视关于自我的真相。
+                </li>
+                <li>
+                  <span className="font-semibold text-slate-900">设计显影：</span>
+                  我的“实验室”和“游乐场”。通过感觉编程/氛围编程（Vibe Coding），将脑中那些突如其来的灵感和创意，尽快地转化为可见、可互动的数字实体。我构建 AI 驱动、以人为中心的数字工具，服务学习、研究与知识服务场景。
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <div className="space-y-3 text-sm leading-relaxed text-slate-700">
+              <p>
+                I am Sisyphus Lynn, and here is the &quot;Three Realms&quot; of an academic escapee. I offer scientific training and consulting for altruism, write i-novels for seeking self-understanding, and design and develop digital artifacts for creativity manifestation.
+              </p>
+              <p>
+                <span className="font-semibold text-slate-900">Researchsmith:</span> I monetize the knowledge and skills accumulated from 15 years of academic research. I no longer write for academic institutions, but for specific, struggling individuals (Master&apos;s and PhD students), providing them with training and consulting on survival and development within academia. This allows me to maintain financial dignity and remain active in social relationships.
+              </p>
+              <p>
+                <span className="font-semibold text-slate-900">i-Novelist:</span> My &quot;spiritual sanctuary&quot; and &quot;psychological operating room.&quot; Through the writing form of i-novels, I directly and honestly gaze upon the truth about myself.
+              </p>
+              <p>
+                <span className="font-semibold text-slate-900">Designer:</span> My &quot;laboratory&quot; and &quot;playground.&quot; Through Vibe Coding, I quickly transform sudden inspirations and ideas into visible, interactive digital entities. I build AI-driven, human-centered digital tools to serve learning, research, and knowledge service scenarios.
+              </p>
+            </div>
+          )}
         </div>
       </section>
 
       <header id="researchsmith" className="rounded-lg border border-amber-200/50 bg-amber-50 p-5 scroll-mt-24">
         <p className="text-xs font-semibold uppercase tracking-widest text-amber-900/60">The Researchsmith</p>
         <h2 className="mt-2 text-lg font-semibold text-amber-950">
-          {lang === "zh" ? "为科研人打辅助。" : "Assist researchers to achieve better processes and outcomes."}
+          {lang === "zh" ? "学术利他" : "Assist researchers to achieve better processes and outcomes."}
         </h2>
       </header>
 
@@ -285,7 +338,7 @@ export default function BookProgress({ lang }: BookProgressProps) {
 
       <div className="rounded-lg border border-slate-200/50 bg-white p-5">
         <h3 className="mb-4 font-semibold text-slate-900">
-          {lang === "zh" ? "精选阅读" : "Featured Articles"}
+          {lang === "zh" ? "公众号精选阅读" : "Featured Articles"}
         </h3>
         <ol className="space-y-2 text-sm text-slate-700">
           {ARTICLE_LINKS.map((article) => (
@@ -311,7 +364,7 @@ export default function BookProgress({ lang }: BookProgressProps) {
             className="group rounded-md border border-slate-200 bg-slate-50/50 p-3 transition hover:bg-slate-50 hover:shadow-sm"
           >
             <div className="relative mb-3 h-28 w-full overflow-hidden rounded border border-slate-200 bg-white">
-              <Image src="/images/image3a.png" alt="Research notes cover A" fill className="object-contain p-1.5" sizes="220px" />
+              <Image src="/images/image3b.jpg" alt="Research notes cover B" fill className="object-contain p-1.5" sizes="220px" />
             </div>
             <p className="text-xs font-medium text-slate-700 group-hover:text-slate-900">《西西弗斯林的研究笔记》</p>
           </a>
@@ -323,7 +376,7 @@ export default function BookProgress({ lang }: BookProgressProps) {
             className="group rounded-md border border-slate-200 bg-slate-50/50 p-3 transition hover:bg-slate-50 hover:shadow-sm"
           >
             <div className="relative mb-3 h-28 w-full overflow-hidden rounded border border-slate-200 bg-white">
-              <Image src="/images/image4a.png" alt="Academic reading album cover A" fill className="object-contain p-1.5" sizes="220px" />
+              <Image src="/images/image4b.png" alt="Academic reading album cover B" fill className="object-contain p-1.5" sizes="220px" />
             </div>
             <p className="text-xs font-medium text-slate-700 group-hover:text-slate-900">《学术阅读的艺术与实战》</p>
           </a>
@@ -331,13 +384,33 @@ export default function BookProgress({ lang }: BookProgressProps) {
       </div>
 
       <div className="rounded-lg border border-slate-200/50 bg-white p-5">
-        <h3 className="mb-4 font-semibold text-slate-900">
-          {lang === "zh" ? "研究辅助服务" : "Research Assistance Services"}
-        </h3>
+        <div className="mb-4 flex items-center justify-between gap-3">
+          <h3 className="font-semibold text-slate-900">
+            {lang === "zh" ? "研究辅助服务" : "Research Assistance Services"}
+          </h3>
+          <div className="flex items-center gap-2 text-[11px] font-medium">
+            <button
+              type="button"
+              onClick={expandAllResearchPanels}
+              className="rounded-full border border-slate-300/80 bg-white px-2.5 py-1 text-slate-700 transition hover:bg-slate-50"
+            >
+              {lang === "zh" ? "全部展开" : "Expand all"}
+            </button>
+            <button
+              type="button"
+              onClick={collapseAllResearchPanels}
+              className="rounded-full border border-slate-300/80 bg-white px-2.5 py-1 text-slate-700 transition hover:bg-slate-50"
+            >
+              {lang === "zh" ? "全部折叠" : "Collapse all"}
+            </button>
+          </div>
+        </div>
         <div className="space-y-2">
           {researchServicePanels.map((panel) => (
             <details
               key={panel.title}
+              open={openResearchPanels.includes(panel.title)}
+              onToggle={(event) => toggleResearchPanel(panel.title, event.currentTarget.open)}
               className="group rounded-md border border-slate-200/80 bg-slate-50/50 transition-colors open:bg-blue-50/50 open:border-blue-200/80"
             >
               <summary className="cursor-pointer list-none px-4 py-3 font-medium text-slate-900 text-sm hover:bg-slate-100/50">
@@ -354,17 +427,6 @@ export default function BookProgress({ lang }: BookProgressProps) {
               </div>
             </details>
           ))}
-        </div>
-
-        <div className="mt-4 flex gap-3 rounded-md border border-slate-200/80 bg-slate-50/50 p-3">
-          <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded border border-slate-200">
-            <Image src="/images/image8.png" alt="WeChat QR code" fill className="object-cover" sizes="64px" />
-          </div>
-          <p className="flex items-center text-xs text-slate-700">
-            {lang === "zh"
-              ? "咨询以上服务可添加微信 wenrenws"
-              : "For these services, contact via WeChat: wenrenws"}
-          </p>
         </div>
       </div>
     </section>

@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+
 type ToolCard = {
   name: string;
   summary: string;
@@ -29,7 +33,7 @@ const tools: ToolCard[] = [
     summary:
       "A mind-mapping tool for creating concept nodes and relationship lines to build knowledge maps individually or collaboratively, potentially with AI.",
     github: "https://github.com/linsharon/second-brain",
-    vercel: "https://second-brain.vercel.app",
+    vercel: "https://second-brain-rust-two.vercel.app/",
   },
   {
     name: "Research Workspace",
@@ -52,6 +56,15 @@ const history: HistoryItem[] = [
     archive: "https://web.archive.org/web/20240519102554/https://researchic.com/",
   },
   {
+    period: "2019 - 2020",
+    project: "StartupCan.ch",
+    detailZh: "瑞士创业者点对点社区，支持课程、问答、活动与创业资源交易。",
+    detailEn:
+      "A Swiss peer-to-peer community for entrepreneurs, including learning, Q&A, events, and startup marketplace features.",
+    github: "https://github.com/linsharon/startupcan-ch",
+    archive: "https://web.archive.org/web/20200928050851/https://startupcan.ch/",
+  },
+  {
     period: "2017 - 2019",
     project: "Programship.com",
     detailZh:
@@ -60,15 +73,6 @@ const history: HistoryItem[] = [
       "Served prospective students and international providers with application workflow support, communication tools, and document creation.",
     github: "https://github.com/linsharon/programship-com",
     archive: "https://web.archive.org/web/20190118044701/https://programship.com/",
-  },
-  {
-    period: "2019 - 2020",
-    project: "StartupCan.ch",
-    detailZh: "瑞士创业者点对点社区，支持课程、问答、活动与创业资源交易。",
-    detailEn:
-      "A Swiss peer-to-peer community for entrepreneurs, including learning, Q&A, events, and startup marketplace features.",
-    github: "https://github.com/linsharon/startupcan-ch",
-    archive: "https://web.archive.org/web/20200928050851/https://startupcan.ch/",
   },
 ];
 
@@ -85,15 +89,7 @@ const servicePanelsZh: ServicePanel[] = [
     lines: ["针对小型研究团队或独立教育者，快速部署轻量化 Moodle 学习管理系统。"],
   },
   {
-    title: "科研外脑系统定制",
-    lines: [
-      "提供科研知识管理系统的咨询与搭建服务，帮研究者把 Zotero、Obsidian、Notion 和 AI 工具串联起来。",
-      "设计一套从文献输入到论文输出的自动化流水线。",
-      "适合那些被碎片化信息淹没、感觉大脑内存不足的博士生和青年教师。",
-    ],
-  },
-  {
-    title: "AI 辅助研究工作流设计",
+    title: "以开发研究工具为目的的氛围编程",
     lines: [
       "教研究者利用感觉编程工具，开发适合他们自己需求的小工具。",
       "比如做一个特定的文本爬虫，或者做一个分析学生行为数据的看板。",
@@ -116,14 +112,7 @@ const servicePanelsEn: ServicePanel[] = [
     ],
   },
   {
-    title: "3. Personal Knowledge Management Architecture",
-    lines: [
-      "We offer consulting and development services for scientific knowledge management systems, helping researchers connect Zotero, Obsidian, Notion, and AI tools to design an automated pipeline from literature input to paper output.",
-      "This is suitable for doctoral students and young faculty members who are overwhelmed by fragmented information and feel their brains are running out of memory.",
-    ],
-  },
-  {
-    title: "4. Vibe Coding for Researchers",
+    title: "3. Vibe Coding for Researchers",
     lines: [
       "Guide teachers or researchers to use the Vibe coding tool to develop micro-tools tailored to their experimental needs.",
       "For example, they could create a specific text crawler or a dashboard for analyzing student behavior data.",
@@ -133,23 +122,43 @@ const servicePanelsEn: ServicePanel[] = [
 
 export default function DesignPanel({ lang }: DesignPanelProps) {
   const servicePanels = lang === "zh" ? servicePanelsZh : servicePanelsEn;
+  const [openDevPanels, setOpenDevPanels] = useState<string[]>([]);
+
+  const expandAllDevPanels = () => {
+    setOpenDevPanels(servicePanels.map((panel) => panel.title));
+  };
+
+  const collapseAllDevPanels = () => {
+    setOpenDevPanels([]);
+  };
+
+  const toggleDevPanel = (title: string, isOpen: boolean) => {
+    setOpenDevPanels((prev) => {
+      if (isOpen) {
+        if (prev.includes(title)) {
+          return prev;
+        }
+
+        return [...prev, title];
+      }
+
+      return prev.filter((item) => item !== title);
+    });
+  };
 
   return (
     <section className="space-y-6 font-serif">
       <header className="rounded-lg border border-slate-200/50 bg-white p-5">
         <p className="text-xs font-semibold uppercase tracking-widest text-slate-600">Designer</p>
-        <h2 className="mt-2 text-lg font-semibold text-slate-900">The Digital Manifestation of Creativity</h2>
+        <h2 className="mt-2 text-lg font-semibold text-slate-900">
+          {lang === "zh" ? "设计显影" : "The Digital Manifestation of Creativity"}
+        </h2>
       </header>
 
       <div className="rounded-lg border border-slate-200/50 bg-white p-5">
         <h3 className="mb-3 font-semibold text-slate-900">
           {lang === "zh" ? "工具" : "Tools"}
         </h3>
-        <p className="mb-4 text-sm text-slate-700">
-          {lang === "zh"
-            ? "我构建 AI 驱动、以人为中心的数字工具，服务学习、研究与知识服务场景。"
-            : "I craft AI-driven, human-centered digital tools for learning, research, and knowledge service scenarios."}
-        </p>
 
         <div className="space-y-3">
           {tools.map((tool) => (
@@ -185,13 +194,33 @@ export default function DesignPanel({ lang }: DesignPanelProps) {
       </div>
 
       <div className="rounded-lg border border-slate-200/50 bg-white p-5">
-        <h3 className="mb-4 font-semibold text-slate-900">
-          {lang === "zh" ? "服务" : "Services"}
-        </h3>
+        <div className="mb-4 flex items-center justify-between gap-3">
+          <h3 className="font-semibold text-slate-900">
+            {lang === "zh" ? "开发服务" : "Development Services"}
+          </h3>
+          <div className="flex items-center gap-2 text-[11px] font-medium">
+            <button
+              type="button"
+              onClick={expandAllDevPanels}
+              className="rounded-full border border-slate-300/80 bg-white px-2.5 py-1 text-slate-700 transition hover:bg-slate-50"
+            >
+              {lang === "zh" ? "全部展开" : "Expand all"}
+            </button>
+            <button
+              type="button"
+              onClick={collapseAllDevPanels}
+              className="rounded-full border border-slate-300/80 bg-white px-2.5 py-1 text-slate-700 transition hover:bg-slate-50"
+            >
+              {lang === "zh" ? "全部折叠" : "Collapse all"}
+            </button>
+          </div>
+        </div>
         <div className="space-y-2">
           {servicePanels.map((panel) => (
             <details
               key={panel.title}
+              open={openDevPanels.includes(panel.title)}
+              onToggle={(event) => toggleDevPanel(panel.title, event.currentTarget.open)}
               className="group rounded-md border border-slate-200/80 bg-slate-50/50 transition-colors open:bg-teal-50/50 open:border-teal-200/80"
             >
               <summary className="cursor-pointer list-none px-4 py-3 font-medium text-slate-900 text-sm hover:bg-slate-100/50 transition">

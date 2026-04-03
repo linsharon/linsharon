@@ -16,6 +16,7 @@
   --font-academic: var(--font-academic-src);
   --font-literary: var(--font-literary-src);
   --font-design: var(--font-design-src);
+  --font-rounded: var(--font-rounded-src);
 
   --font-sans: var(--font-academic-src);
   --font-mono: var(--font-design-src);
@@ -30,11 +31,9 @@ body {
 }
 
 h1 {
-  font-size: 3rem;
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: -0.02em;
-  font-family: var(--font-academic-src), serif;
   margin-bottom: 0.5rem;
 }
 
