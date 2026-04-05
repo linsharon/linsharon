@@ -5,8 +5,10 @@ import { useState } from "react";
 type ToolCard = {
   name: string;
   summary: string;
+  summaryZh?: string;
   github: string;
   vercel: string;
+  previewEnabled?: boolean;
 };
 
 type HistoryItem = {
@@ -32,6 +34,8 @@ const tools: ToolCard[] = [
     name: "Second-Brain",
     summary:
       "A mind-mapping tool for creating concept nodes and relationship lines to build knowledge maps individually or collaboratively, potentially with AI.",
+    summaryZh:
+      "一款用于创建概念节点和关系线的思维导图工具，可以单独或协作构建知识图谱，并可能与人工智能结合使用。",
     github: "https://github.com/linsharon/second-brain",
     vercel: "https://second-brain-rust-two.vercel.app/",
   },
@@ -39,8 +43,10 @@ const tools: ToolCard[] = [
     name: "Research Workspace",
     summary:
       "A web tool to guide early-stage research students in reading and writing research papers.",
+    summaryZh: "一款指导初级研究生阅读和撰写研究论文的网络工具。",
     github: "https://github.com/linsharon/researchworkspace",
     vercel: "https://researchworkspace.vercel.app/",
+    previewEnabled: false,
   },
 ];
 
@@ -168,7 +174,7 @@ export default function DesignPanel({ lang }: DesignPanelProps) {
             >
               <h4 className="font-semibold text-slate-900 text-sm">{tool.name}</h4>
               <p className="mt-2 text-xs leading-relaxed text-slate-700">
-                {tool.summary}
+                {lang === "zh" && tool.summaryZh ? tool.summaryZh : tool.summary}
               </p>
               <div className="mt-3 flex flex-wrap gap-2">
                 <a
@@ -179,14 +185,23 @@ export default function DesignPanel({ lang }: DesignPanelProps) {
                 >
                   GitHub
                 </a>
-                <a
-                  className="inline-flex items-center rounded-full border border-emerald-300/50 bg-emerald-50/60 px-3 py-1.5 font-design text-xs uppercase tracking-wider text-emerald-700 transition hover:bg-emerald-100"
-                  href={tool.vercel}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {lang === "zh" ? "预览" : "Preview"}
-                </a>
+                {tool.previewEnabled === false ? (
+                  <span
+                    className="inline-flex cursor-not-allowed items-center rounded-full border border-slate-300/80 bg-slate-100 px-3 py-1.5 font-design text-xs uppercase tracking-wider text-slate-400"
+                    aria-disabled="true"
+                  >
+                    {lang === "zh" ? "预览" : "Preview"}
+                  </span>
+                ) : (
+                  <a
+                    className="inline-flex items-center rounded-full border border-emerald-300/50 bg-emerald-50/60 px-3 py-1.5 font-design text-xs uppercase tracking-wider text-emerald-700 transition hover:bg-emerald-100"
+                    href={tool.vercel}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {lang === "zh" ? "预览" : "Preview"}
+                  </a>
+                )}
               </div>
             </div>
           ))}

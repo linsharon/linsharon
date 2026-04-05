@@ -10,6 +10,54 @@ import ContactPanel from "@/components/ContactPanel";
 type Lang = "zh" | "en";
 type SectionId = "about" | "researchsmith" | "inovel" | "design" | "contact";
 
+type FundingOption = {
+  label: string;
+  href: string;
+};
+
+function DonateDropdown({
+  lang,
+}: {
+  lang: Lang;
+}) {
+  const fundingOptions: FundingOption[] = [
+    {
+      label: "PayPal",
+      href: process.env.NEXT_PUBLIC_PAYPAL_URL || "https://paypal.me/researchic?locale.x=en_US&country.x=JP",
+    },
+    {
+      label: "Buy Me a Coffee",
+      href: process.env.NEXT_PUBLIC_BMAC_URL || "https://buymeacoffee.com/sisyphuslynn",
+    },
+  ];
+
+  return (
+    <details className="group relative">
+      <summary
+        className="inline-flex list-none cursor-pointer items-center rounded-full border border-amber-300/80 bg-amber-100/90 px-3 py-1.5 font-design text-[11px] font-semibold uppercase tracking-[0.14em] text-amber-900 transition hover:bg-amber-200/80 [&::-webkit-details-marker]:hidden"
+        aria-label={lang === "zh" ? "打开赞助菜单" : "Open donate menu"}
+      >
+        Donate
+      </summary>
+
+      <div className="absolute right-0 top-[calc(100%+8px)] z-50 hidden w-52 rounded-md border border-amber-300/70 bg-white p-2 shadow-lg group-open:block">
+        {fundingOptions.map((item) => (
+          <a
+            key={item.label}
+            href={item.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex w-full items-center rounded-md px-3 py-2 font-design text-[11px] uppercase tracking-[0.08em] text-amber-900 transition hover:bg-amber-100/70"
+            aria-label={item.label}
+          >
+            {item.label}
+          </a>
+        ))}
+      </div>
+    </details>
+  );
+}
+
 export default function Home() {
   const [lang, setLang] = useState<Lang>("zh");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -75,6 +123,7 @@ export default function Home() {
           </nav>
 
           <div className="flex items-center gap-2">
+            <DonateDropdown lang={lang} />
             <button
               type="button"
               onClick={() => setLang((prev) => (prev === "zh" ? "en" : "zh"))}
