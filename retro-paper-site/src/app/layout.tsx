@@ -29,6 +29,11 @@ const rounded = Nunito({
 export const metadata: Metadata = {
   title: "ResearchIC",
   description: "ResearchIC three-realm website",
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
 };
 
 export default function RootLayout({

@@ -46,7 +46,7 @@ const tools: ToolCard[] = [
     summaryZh: "一款指导初级研究生阅读和撰写研究论文的网络工具。",
     github: "https://github.com/linsharon/researchworkspace",
     vercel: "https://researchworkspace.vercel.app/",
-    previewEnabled: false,
+    previewEnabled: true,
   },
 ];
 

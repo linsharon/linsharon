@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import MainLayout from "@/components/MainLayout";
 import BookProgress from "@/components/BookProgress";
 import INovelPanel from "@/components/INovelPanel";
@@ -20,6 +21,27 @@ function DonateDropdown({
 }: {
   lang: Lang;
 }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const handlePointerDown = (event: MouseEvent) => {
+      if (!menuRef.current) {
+        return;
+      }
+
+      const target = event.target;
+      if (target instanceof Node && !menuRef.current.contains(target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handlePointerDown);
+    return () => {
+      document.removeEventListener("mousedown", handlePointerDown);
+    };
+  }, []);
+
   const fundingOptions: FundingOption[] = [
     {
       label: "PayPal",
@@ -32,35 +54,42 @@ function DonateDropdown({
   ];
 
   return (
-    <details className="group relative">
-      <summary
+    <div ref={menuRef} className="relative">
+      <button
+        type="button"
+        onClick={() => setIsOpen((prev) => !prev)}
         className="inline-flex list-none cursor-pointer items-center rounded-full border border-amber-300/80 bg-amber-100/90 px-3 py-1.5 font-design text-[11px] font-semibold uppercase tracking-[0.14em] text-amber-900 transition hover:bg-amber-200/80 [&::-webkit-details-marker]:hidden"
         aria-label={lang === "zh" ? "打开赞助菜单" : "Open donate menu"}
+        aria-expanded={isOpen}
       >
         Donate
-      </summary>
+      </button>
 
-      <div className="absolute right-0 top-[calc(100%+8px)] z-50 hidden w-52 rounded-md border border-amber-300/70 bg-white p-2 shadow-lg group-open:block">
+      {isOpen ? (
+        <div className="absolute right-0 top-[calc(100%+8px)] z-50 w-52 rounded-md border border-amber-300/70 bg-white p-2 shadow-lg">
         {fundingOptions.map((item) => (
           <a
             key={item.label}
             href={item.href}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => setIsOpen(false)}
             className="flex w-full items-center rounded-md px-3 py-2 font-design text-[11px] uppercase tracking-[0.08em] text-amber-900 transition hover:bg-amber-100/70"
             aria-label={item.label}
           >
             {item.label}
           </a>
         ))}
-      </div>
-    </details>
+        </div>
+      ) : null}
+    </div>
   );
 }
 
 export default function Home() {
   const [lang, setLang] = useState<Lang>("zh");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const currentYear = new Date().getFullYear();
 
   const navItems: { id: SectionId; label: string }[] =
     lang === "zh"
@@ -183,6 +212,20 @@ export default function Home() {
       />
 
       <ContactPanel lang={lang} />
+
+      <footer className="mt-4 border-t border-slate-200/70 bg-slate-50/80 px-4 py-4 sm:px-6 lg:px-8">
+        <div className="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between gap-2">
+          <Link
+            href="/legal-disclosure"
+            className="font-design text-[11px] uppercase tracking-[0.14em] text-slate-700 transition hover:text-slate-950"
+          >
+            {lang === "zh" ? "法律披露" : "Legal Disclosure"}
+          </Link>
+          <p className="font-design text-[11px] uppercase tracking-[0.1em] text-slate-500">
+            © {currentYear} ResearchIC. {lang === "zh" ? "保留所有权利。" : "All rights reserved."}
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }
