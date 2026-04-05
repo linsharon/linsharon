@@ -216,10 +216,10 @@ export default function Home() {
       <footer className="mt-4 border-t border-slate-200/70 bg-slate-50/80 px-4 py-4 sm:px-6 lg:px-8">
         <div className="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between gap-2">
           <Link
-            href="/legal-disclosure"
+            href="/business-disclosure"
             className="font-design text-[11px] uppercase tracking-[0.14em] text-slate-700 transition hover:text-slate-950"
           >
-            {lang === "zh" ? "法律披露" : "Legal Disclosure"}
+            {lang === "zh" ? "商业披露" : "Buisness Disclosure"}
           </Link>
           <p className="font-design text-[11px] uppercase tracking-[0.1em] text-slate-500">
             © {currentYear} ResearchIC. {lang === "zh" ? "保留所有权利。" : "All rights reserved."}

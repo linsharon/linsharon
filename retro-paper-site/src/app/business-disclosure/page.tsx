@@ -20,9 +20,9 @@ const localeLabels: { value: Locale; label: string }[] = [
 ];
 
 const pageTitleByLocale: Record<Locale, string> = {
-  zh: "法律披露",
-  en: "Legal Disclosure",
-  ja: "法的開示",
+  zh: "商业披露",
+  en: "Buisness Disclosure",
+  ja: "特定商取引法に基づく表記",
 };
 
 const disclosures: DisclosureItem[] = [
@@ -124,7 +124,7 @@ const disclosures: DisclosureItem[] = [
   },
 ];
 
-export default function LegalDisclosurePage() {
+export default function BusinessDisclosurePage() {
   const [locale, setLocale] = useState<Locale>("zh");
 
   const getTitle = (item: DisclosureItem) => {
@@ -158,7 +158,9 @@ export default function LegalDisclosurePage() {
           <h1 className="text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
             {pageTitleByLocale[locale]}
           </h1>
-          <p className="mt-2 text-sm text-slate-600">法律披露 / Legal Disclosure / 法的開示</p>
+          <p className="mt-2 text-sm text-slate-600">
+            商业披露 / Buisness Disclosure / 特定商取引法に基づく表記
+          </p>
 
           <div className="mt-4 flex flex-wrap gap-2">
             {localeLabels.map((option) => {
