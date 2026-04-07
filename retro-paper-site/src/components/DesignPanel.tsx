@@ -27,7 +27,18 @@ type DesignPanelProps = {
 type ServicePanel = {
   title: string;
   lines: string[];
+  purchaseCtaAfterLine?: string;
+  purchaseCtas?: {
+    label: string;
+    href?: string;
+    message?: string;
+  }[];
 };
+
+const WECHAT_PURCHASE_MESSAGE = "请添加西西弗斯林的微信：wenrenws，通过转账付款。";
+const DESIGN_SERVICE_PAYPAL_URL_1 = "https://www.paypal.com/ncp/payment/DJ2HCFHXLUXZG";
+const DESIGN_SERVICE_PAYPAL_URL_2 = "https://www.paypal.com/ncp/payment/J6PHAJW28VARL";
+const DESIGN_SERVICE_PAYPAL_URL_3 = "https://www.paypal.com/ncp/payment/KK7SYJEUCNZHU";
 
 const tools: ToolCard[] = [
   {
@@ -84,31 +95,75 @@ const history: HistoryItem[] = [
 
 const servicePanelsZh: ServicePanel[] = [
   {
-    title: "个人品牌显影",
+    title: "1. 个人品牌网站设计和开发",
     lines: [
       "为研究者设计一个能体现其研究品味和学术影响力的数字主页。",
       "包含 SEO 优化（让同行更容易搜到你）、学术成果自动化展示，以及与个人叙事相结合的风格设计。",
     ],
+    purchaseCtaAfterLine: "包含 SEO 优化（让同行更容易搜到你）、学术成果自动化展示，以及与个人叙事相结合的风格设计。",
+    purchaseCtas: [
+      {
+        label: "PayPal购买",
+        href: DESIGN_SERVICE_PAYPAL_URL_1,
+      },
+      {
+        label: "微信购买",
+        message: WECHAT_PURCHASE_MESSAGE,
+      },
+    ],
   },
   {
-    title: "敏捷教学环境搭建",
+    title: "2. 敏捷教学环境搭建",
     lines: ["针对小型研究团队或独立教育者，快速部署轻量化 Moodle 学习管理系统。"],
+    purchaseCtaAfterLine: "针对小型研究团队或独立教育者，快速部署轻量化 Moodle 学习管理系统。",
+    purchaseCtas: [
+      {
+        label: "PayPal购买",
+        href: DESIGN_SERVICE_PAYPAL_URL_2,
+      },
+      {
+        label: "微信购买",
+        message: WECHAT_PURCHASE_MESSAGE,
+      },
+    ],
   },
   {
-    title: "以开发研究工具为目的的氛围编程",
+    title: "3. 用氛围编程开发研究工具",
     lines: [
-      "教研究者利用感觉编程工具，开发适合他们自己需求的小工具。",
+      "利用氛围编程（Vibe Coding）工具，开发服务研究需求的在线工具。",
       "比如做一个特定的文本爬虫，或者做一个分析学生行为数据的看板。",
+    ],
+    purchaseCtaAfterLine: "比如做一个特定的文本爬虫，或者做一个分析学生行为数据的看板。",
+    purchaseCtas: [
+      {
+        label: "PayPal购买",
+        href: DESIGN_SERVICE_PAYPAL_URL_3,
+      },
+      {
+        label: "微信购买",
+        message: WECHAT_PURCHASE_MESSAGE,
+      },
     ],
   },
 ];
 
 const servicePanelsEn: ServicePanel[] = [
   {
-    title: "1. Academic Digital Presence",
+    title: "1. Personal Brand Website Design and Development",
     lines: [
       "Design a digital homepage for researchers that reflects their research taste and academic influence.",
       "This includes SEO optimization (making it easier for peers to find you), automated display of academic achievements, and a style design that integrates personal narrative.",
+    ],
+    purchaseCtaAfterLine: "This includes SEO optimization (making it easier for peers to find you), automated display of academic achievements, and a style design that integrates personal narrative.",
+    purchaseCtas: [
+      {
+        label: "Buy via PayPal",
+        href: DESIGN_SERVICE_PAYPAL_URL_1,
+      },
+      {
+        label: "Buy via WeChat",
+        message: WECHAT_PURCHASE_MESSAGE,
+      },
     ],
   },
   {
@@ -116,12 +171,34 @@ const servicePanelsEn: ServicePanel[] = [
     lines: [
       "Quickly deploy a lightweight Moodle learning management system for small research teams or independent educators.",
     ],
+    purchaseCtaAfterLine: "Quickly deploy a lightweight Moodle learning management system for small research teams or independent educators.",
+    purchaseCtas: [
+      {
+        label: "Buy via PayPal",
+        href: DESIGN_SERVICE_PAYPAL_URL_2,
+      },
+      {
+        label: "Buy via WeChat",
+        message: WECHAT_PURCHASE_MESSAGE,
+      },
+    ],
   },
   {
-    title: "3. Vibe Coding for Researchers",
+    title: "3. Develop research tools using vibe coding",
     lines: [
-      "Guide teachers or researchers to use the Vibe coding tool to develop micro-tools tailored to their experimental needs.",
-      "For example, they could create a specific text crawler or a dashboard for analyzing student behavior data.",
+      "Utilize Vibe Coding tools to develop online tools that serve research needs.",
+      "For example, create a specific text crawler or a dashboard for analyzing student behavior data.",
+    ],
+    purchaseCtaAfterLine: "For example, create a specific text crawler or a dashboard for analyzing student behavior data.",
+    purchaseCtas: [
+      {
+        label: "Buy via PayPal",
+        href: DESIGN_SERVICE_PAYPAL_URL_3,
+      },
+      {
+        label: "Buy via WeChat",
+        message: WECHAT_PURCHASE_MESSAGE,
+      },
     ],
   },
 ];
@@ -247,7 +324,39 @@ export default function DesignPanel({ lang }: DesignPanelProps) {
               </summary>
               <div className="border-t border-slate-200 px-4 py-3 text-sm text-slate-700 space-y-2 leading-relaxed">
                 {panel.lines.map((line) => (
-                  <p key={line}>{line}</p>
+                  <div key={line} className="space-y-2">
+                    <p>{line}</p>
+                    {panel.purchaseCtaAfterLine === line && panel.purchaseCtas?.length ? (
+                      <div className="flex flex-wrap items-center gap-2">
+                        {panel.purchaseCtas.map((cta) => (
+                          cta.href ? (
+                            <a
+                              key={cta.label}
+                              className="inline-flex items-center rounded-full border border-slate-900 bg-slate-900 px-4 py-1.5 text-xs font-medium text-white transition hover:border-slate-700 hover:bg-slate-700"
+                              href={cta.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {cta.label}
+                            </a>
+                          ) : (
+                            <button
+                              key={cta.label}
+                              type="button"
+                              onClick={() => {
+                                if (cta.message) {
+                                  window.alert(cta.message);
+                                }
+                              }}
+                              className="inline-flex items-center rounded-full border border-slate-900 bg-slate-900 px-4 py-1.5 text-xs font-medium text-white transition hover:border-slate-700 hover:bg-slate-700"
+                            >
+                              {cta.label}
+                            </button>
+                          )
+                        ))}
+                      </div>
+                    ) : null}
+                  </div>
                 ))}
               </div>
             </details>

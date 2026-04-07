@@ -50,6 +50,28 @@ type BookProgressProps = {
   lang: "zh" | "en";
 };
 
+type ResearchServicePanel = {
+  title: string;
+  lines: string[];
+  purchaseCtaAfterLine?: string;
+  purchaseCtas?: {
+    label: string;
+    href?: string;
+    message?: string;
+  }[];
+};
+
+const COURSE_WECHAT_TRANSFER_MESSAGE = "请添加西西弗斯林的微信：wenrenws，通过转账付款。";
+
+const COURSE_PAYPAL_URL_1 = "https://www.paypal.com/ncp/payment/C5H9UHGT5JS3G";
+const COURSE_PAYPAL_URL_2 = "https://www.paypal.com/ncp/payment/UKXRSE2JPYSNC";
+const COURSE_PAYPAL_URL_3 = "https://www.paypal.com/ncp/payment/N84JJTPMF6RDW";
+const COURSE_PAYPAL_URL_4 = "https://www.paypal.com/ncp/payment/SJX2GZAGNTLAY";
+const COURSE_PAYPAL_URL_5 = "https://www.paypal.com/ncp/payment/8ZZLCE6T2JZT2";
+
+const COURSE_WECHAT_URL_2 = "https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA3NTUwNTMwNQ==&action=getalbum&album_id=4461744611082108930#wechat_redirect";
+const COURSE_WECHAT_URL_4 = "https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA3NTUwNTMwNQ==&action=getalbum&album_id=4461787298896281614#wechat_redirect";
+
 const ARTICLE_LINKS = [
   {
     zh: "作为博士生，为什么一定要了解研究范式（research paradigms）？",
@@ -103,61 +125,135 @@ const ARTICLE_LINKS = [
   },
 ];
 
-const RESEARCH_SERVICE_PANELS_ZH = [
+const RESEARCH_SERVICE_PANELS_ZH: ResearchServicePanel[] = [
   {
-    title: "第一，一对一咨询",
+    title: "1. 一对一咨询（按小时计费）",
     lines: [
-      "根据你面临的具体问题和需求，提供专业的意见、建议或方案。",
-      "1小时收集客户需求，之后会需要几天时间做调查和草拟方案，然后我会花1-2小时通过腾讯会议回复客户需求。",
+      "根据你面临的具体问题和需求，提供专业的意见、建议或方案。每小时服务费：约1140元。",
+    ],
+    purchaseCtaAfterLine: "根据你面临的具体问题和需求，提供专业的意见、建议或方案。每小时服务费：约1140元。",
+    purchaseCtas: [
+      {
+        label: "PayPal购买",
+        href: COURSE_PAYPAL_URL_1,
+      },
+      {
+        label: "微信购买",
+        message: COURSE_WECHAT_TRANSFER_MESSAGE,
+      },
     ],
   },
   {
-    title: "第二，学术读写培训课程",
+    title: "2. 学术读写培训课程",
     lines: [
       "3小时的亲密且深度的认知重构，获得课程链接，进行自主学习。",
       "课程将会教你如何进行系统的学术阅读和学术写作，将破碎的想法转化为符合学术范式的表达。",
       "课间提供1小时的微信答疑（打字）。",
     ],
+    purchaseCtaAfterLine: "课间提供1小时的微信答疑（打字）。",
+    purchaseCtas: [
+      {
+        label: "PayPal购买",
+        href: COURSE_PAYPAL_URL_2,
+      },
+      {
+        label: "微信购买",
+        href: COURSE_WECHAT_URL_2,
+      },
+    ],
   },
   {
-    title: "第三，异步研究诊断",
+    title: "3. 异步研究诊断",
     lines: [
       "用户提交一份研究计划或论文草稿，我将进行深度拆解和建议。",
       "并以PDF文档+30分钟微信答疑（打字）的形式给与反馈。",
     ],
+    purchaseCtaAfterLine: "并以PDF文档+30分钟微信答疑（打字）的形式给与反馈。",
+    purchaseCtas: [
+      {
+        label: "PayPal购买",
+        href: COURSE_PAYPAL_URL_3,
+      },
+      {
+        label: "微信购买",
+        message: COURSE_WECHAT_TRANSFER_MESSAGE,
+      },
+    ],
   },
   {
-    title: "第四，AI + 研究工作流定制",
+    title: "4. AI+研究工作流课程",
     lines: [
       "利用开发的 research workspace 的工具逻辑，教学生如何搭建自己的数字外脑。",
       "包括配置一系列 AI 工具来支撑硕博生涯的学术活动。",
     ],
+    purchaseCtaAfterLine: "包括配置一系列 AI 工具来支撑硕博生涯的学术活动。",
+    purchaseCtas: [
+      {
+        label: "PayPal购买",
+        href: COURSE_PAYPAL_URL_4,
+      },
+      {
+        label: "微信购买",
+        href: COURSE_WECHAT_URL_4,
+      },
+    ],
   },
   {
-    title: "第五，小规模疗愈型共创工作坊",
+    title: "5. 小规模疗愈型共创工作坊",
     lines: [
       "通过reflective writing来记录与思考研究过程中的挫败、焦虑和自我怀疑。",
       "针对那些对学术体制感到幻灭、甚至有抑郁倾向的硕博生。",
       "通过个人叙事的方法，找回做研究的初心和动力。",
     ],
+    purchaseCtaAfterLine: "通过个人叙事的方法，找回做研究的初心和动力。",
+    purchaseCtas: [
+      {
+        label: "PayPal购买",
+        href: COURSE_PAYPAL_URL_5,
+      },
+      {
+        label: "微信购买",
+        message: COURSE_WECHAT_TRANSFER_MESSAGE,
+      },
+    ],
   },
 ];
 
-const RESEARCH_SERVICE_PANELS_EN = [
+const RESEARCH_SERVICE_PANELS_EN: ResearchServicePanel[] = [
   {
-    title: "1. Strategic Research Consultation",
+    title: "1. One-on-One Consultation (Hourly Billing)",
     lines: [
-      "Based on your specific problems and needs, I will provide professional opinions, suggestions, or solutions.",
-      "I will spend one hour gathering client needs, followed by several days of research and drafting of solutions.",
-      "Then, I will spend 1-2 hours responding to client needs via Tencent Meeting.",
+      "I will provide professional opinions, suggestions, or solutions based on your specific problems and needs. Service fee: approximately 1140 yuan per hour.",
+    ],
+    purchaseCtaAfterLine: "I will provide professional opinions, suggestions, or solutions based on your specific problems and needs. Service fee: approximately 1140 yuan per hour.",
+    purchaseCtas: [
+      {
+        label: "Buy via PayPal",
+        href: COURSE_PAYPAL_URL_1,
+      },
+      {
+        label: "Buy via Wechat",
+        message: COURSE_WECHAT_TRANSFER_MESSAGE,
+      },
     ],
   },
   {
     title: "2. Academic Literacy Mentoring",
     lines: [
-      "Experience three hours of intimate and in-depth cognitive restructuring, gain access to the course link, and engage in self-directed learning via Lark.",
+      "Experience three hours of intimate and in-depth cognitive restructuring, gain access to the course link, and engage in self-directed learning.",
       "The course will teach you how to conduct systematic academic reading and writing, transforming fragmented ideas into expressions conforming to academic paradigms.",
       "One hour of WeChat Q&A (text-based) is provided during breaks.",
+    ],
+    purchaseCtaAfterLine: "One hour of WeChat Q&A (text-based) is provided during breaks.",
+    purchaseCtas: [
+      {
+        label: "Buy via PayPal",
+        href: COURSE_PAYPAL_URL_2,
+      },
+      {
+        label: "Buy via Wechat",
+        href: COURSE_WECHAT_URL_2,
+      },
     ],
   },
   {
@@ -165,11 +261,33 @@ const RESEARCH_SERVICE_PANELS_EN = [
     lines: [
       "Users submit a research plan or paper draft, which I will analyze in depth and offer suggestions, providing feedback in the form of a PDF document plus a 30-minute WeChat Q&A session (written).",
     ],
+    purchaseCtaAfterLine: "Users submit a research plan or paper draft, which I will analyze in depth and offer suggestions, providing feedback in the form of a PDF document plus a 30-minute WeChat Q&A session (written).",
+    purchaseCtas: [
+      {
+        label: "Buy via PayPal",
+        href: COURSE_PAYPAL_URL_3,
+      },
+      {
+        label: "Buy via Wechat",
+        message: COURSE_WECHAT_TRANSFER_MESSAGE,
+      },
+    ],
   },
   {
     title: "4. AI-Powered Research Workflow Design",
     lines: [
       "Using the tools and logic of the developed research workspace, students are taught how to build their own digital brain, including configuring a series of AI tools to support their academic activities during their master's and doctoral studies.",
+    ],
+    purchaseCtaAfterLine: "Using the tools and logic of the developed research workspace, students are taught how to build their own digital brain, including configuring a series of AI tools to support their academic activities during their master's and doctoral studies.",
+    purchaseCtas: [
+      {
+        label: "Buy via PayPal",
+        href: COURSE_PAYPAL_URL_4,
+      },
+      {
+        label: "Buy via Wechat",
+        href: COURSE_WECHAT_URL_4,
+      },
     ],
   },
   {
@@ -178,6 +296,17 @@ const RESEARCH_SERVICE_PANELS_EN = [
       "This activity uses reflective writing to record and reflect on the frustrations, anxieties, and self-doubt experienced during the research process.",
       "It is aimed at master's and doctoral students who feel disillusioned with the academic system or even have depressive tendencies.",
       "Through personal narratives, it helps them rediscover their initial passion and motivation for research.",
+    ],
+    purchaseCtaAfterLine: "Through personal narratives, it helps them rediscover their initial passion and motivation for research.",
+    purchaseCtas: [
+      {
+        label: "Buy via PayPal",
+        href: COURSE_PAYPAL_URL_5,
+      },
+      {
+        label: "Buy via Wechat",
+        message: COURSE_WECHAT_TRANSFER_MESSAGE,
+      },
     ],
   },
 ];
@@ -422,7 +551,39 @@ export default function BookProgress({ lang }: BookProgressProps) {
               </summary>
               <div className="border-t border-slate-200 px-4 py-3 text-sm text-slate-700 space-y-2 leading-relaxed">
                 {panel.lines.map((line) => (
-                  <p key={line}>{line}</p>
+                  <div key={line} className="space-y-2">
+                    <p>{line}</p>
+                    {panel.purchaseCtaAfterLine === line && panel.purchaseCtas?.length ? (
+                      <div className="flex flex-wrap items-center gap-2">
+                        {panel.purchaseCtas.map((cta) => (
+                          cta.href ? (
+                            <a
+                              key={cta.label}
+                              href={cta.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center rounded-full border border-slate-900 bg-slate-900 px-4 py-1.5 text-xs font-medium text-white transition hover:border-slate-700 hover:bg-slate-700"
+                            >
+                              {cta.label}
+                            </a>
+                          ) : (
+                            <button
+                              key={cta.label}
+                              type="button"
+                              onClick={() => {
+                                if (cta.message) {
+                                  window.alert(cta.message);
+                                }
+                              }}
+                              className="inline-flex items-center rounded-full border border-slate-900 bg-slate-900 px-4 py-1.5 text-xs font-medium text-white transition hover:border-slate-700 hover:bg-slate-700"
+                            >
+                              {cta.label}
+                            </button>
+                          )
+                        ))}
+                      </div>
+                    ) : null}
+                  </div>
                 ))}
               </div>
             </details>

@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
+import { useState } from "react";
 import MainLayout from "@/components/MainLayout";
 import BookProgress from "@/components/BookProgress";
 import INovelPanel from "@/components/INovelPanel";
@@ -11,78 +10,23 @@ import ContactPanel from "@/components/ContactPanel";
 type Lang = "zh" | "en";
 type SectionId = "about" | "researchsmith" | "inovel" | "design" | "contact";
 
-type FundingOption = {
-  label: string;
-  href: string;
-};
+const DONATE_URL = "https://www.paypal.com/ncp/payment/M4RT9PJLJHSG2";
 
 function DonateDropdown({
   lang,
 }: {
   lang: Lang;
 }) {
-  const [isOpen, setIsOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const handlePointerDown = (event: MouseEvent) => {
-      if (!menuRef.current) {
-        return;
-      }
-
-      const target = event.target;
-      if (target instanceof Node && !menuRef.current.contains(target)) {
-        setIsOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handlePointerDown);
-    return () => {
-      document.removeEventListener("mousedown", handlePointerDown);
-    };
-  }, []);
-
-  const fundingOptions: FundingOption[] = [
-    {
-      label: "PayPal",
-      href: process.env.NEXT_PUBLIC_PAYPAL_URL || "https://paypal.me/researchic?locale.x=en_US&country.x=JP",
-    },
-    {
-      label: "Buy Me a Coffee",
-      href: process.env.NEXT_PUBLIC_BMAC_URL || "https://buymeacoffee.com/sisyphuslynn",
-    },
-  ];
-
   return (
-    <div ref={menuRef} className="relative">
-      <button
-        type="button"
-        onClick={() => setIsOpen((prev) => !prev)}
-        className="inline-flex list-none cursor-pointer items-center rounded-full border border-amber-300/80 bg-amber-100/90 px-3 py-1.5 font-design text-[11px] font-semibold uppercase tracking-[0.14em] text-amber-900 transition hover:bg-amber-200/80 [&::-webkit-details-marker]:hidden"
-        aria-label={lang === "zh" ? "打开赞助菜单" : "Open donate menu"}
-        aria-expanded={isOpen}
-      >
-        Donate
-      </button>
-
-      {isOpen ? (
-        <div className="absolute right-0 top-[calc(100%+8px)] z-50 w-52 rounded-md border border-amber-300/70 bg-white p-2 shadow-lg">
-        {fundingOptions.map((item) => (
-          <a
-            key={item.label}
-            href={item.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => setIsOpen(false)}
-            className="flex w-full items-center rounded-md px-3 py-2 font-design text-[11px] uppercase tracking-[0.08em] text-amber-900 transition hover:bg-amber-100/70"
-            aria-label={item.label}
-          >
-            {item.label}
-          </a>
-        ))}
-        </div>
-      ) : null}
-    </div>
+    <a
+      href={DONATE_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex list-none cursor-pointer items-center rounded-full border border-amber-300/80 bg-amber-100/90 px-3 py-1.5 font-design text-[11px] font-semibold uppercase tracking-[0.14em] text-amber-900 transition hover:bg-amber-200/80"
+      aria-label={lang === "zh" ? "前往 PayPal 赞助页面" : "Open PayPal donation page"}
+    >
+      Donate
+    </a>
   );
 }
 
@@ -214,13 +158,7 @@ export default function Home() {
       <ContactPanel lang={lang} />
 
       <footer className="mt-4 border-t border-slate-200/70 bg-slate-50/80 px-4 py-4 sm:px-6 lg:px-8">
-        <div className="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between gap-2">
-          <Link
-            href="/business-disclosure"
-            className="font-design text-[11px] uppercase tracking-[0.14em] text-slate-700 transition hover:text-slate-950"
-          >
-            {lang === "zh" ? "商业披露" : "Buisness Disclosure"}
-          </Link>
+        <div className="mx-auto flex w-full max-w-7xl items-center justify-center">
           <p className="font-design text-[11px] uppercase tracking-[0.1em] text-slate-500">
             © {currentYear} ResearchIC. {lang === "zh" ? "保留所有权利。" : "All rights reserved."}
           </p>
