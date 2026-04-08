@@ -1,65 +1,20 @@
-# ResearchIC — 西西弗斯林的个人主页
+# 西西弗斯林
 
-**Sisyphus Lynn** 的个人主页，展示一个学界遁逃者的"三界"：学术利他、文学利己、设计显影。
+我是西西弗斯林，这里是一个学界遁逃者的“三界”。用学术利他，用文学利己，用设计显影。
 
-网站支持中英文切换，采用三栏布局，底部附联络信息。
+学术利他：我用过往15年学术研究的职业经验积累的知识和技能进行价值变现。不再为体制和机构写作，而是为具体的、挣扎的个体（硕博生）写作，为他们提供在学术界生存和发展的培训和咨询。这让我在财务上保持体面，在社会关系上保持活跃。
 
----
+文学利己：我的“精神避难所”和“心境手术室”。通过私小说的写作形式，直观坦诚地凝视关于自我的真相。
 
-## 技术栈
-
-| 项目 | 版本 |
-|---|---|
-| Next.js (App Router) | 16.2.2 |
-| React | 19 |
-| TypeScript | — |
-| Tailwind CSS | v4 |
-
-字体通过 `next/font/google` 加载：
-- **Cormorant Garamond** (`font-academic`) — 正文衬线
-- **Caveat** (`font-literary`) — 文学风手写
-- **IBM Plex Mono** (`font-design`) — 设计等宽
-- **Nunito** (`font-rounded`) — 品牌标题（ResearchIC）
+设计显影：我的“实验室”和“游乐场”。通过感觉编程/氛围编程（Vibe Coding），将脑中那些突如其来的灵感和创意，尽快地转化为可见、可互动的数字实体。我构建 AI 驱动、以人为中心的数字工具，服务学习、研究与知识服务场景。
 
 ---
 
-## 页面结构
+## 网址
+https://researchic.com
 
-### 顶部导航（Header）
-固定悬浮栏，包含：
-- 品牌名 **ResearchIC**（点击滚动回"关于"板块）
-- 导航菜单：关于 / 研究师 / 私小说作者 / 氛围编程者 / 联络
-- 中英文语言切换按钮
-- 移动端汉堡菜单
 
 ---
 
-### 主体三栏
 
-#### 左栏 — 研究师（Researchsmith）`src/components/BookProgress.tsx`
-
-- **关于**：个人简介，"三界"定位（学术利他 / 文学利己 / 设计显影）
-- **新书进度**：《Conducting Educational Research with AI》（Routledge）进度条展示
-- **公众号精选阅读**：精选文章列表 + 两个微信公众号专辑封面卡片
-- **研究辅助服务**：五项服务的可折叠面板（含全部展开 / 全部折叠按钮）
-
-#### 中栏 — 私小说作者（I-novelist）`src/components/INovelPanel.tsx`
-
-- **《生根》连载**：英文书籍介绍、封面、Amazon / Goodreads / 微信购书链接
-- **私小说栏目**：阅读私小说（书评）/ 西西的私小说（原创）两张跳转卡片
-
-#### 右栏 — 氛围编程者（Designer）`src/components/DesignPanel.tsx`
-
-- **工具**：Second-Brain、Research Workspace 两款工具介绍（含 GitHub 与预览链接）
-- **开发服务**：三项服务的可折叠面板（含全部展开 / 全部折叠按钮）
-- **项目历程**：ResearchIC.com（2021–2024）、StartupCan.ch（2019–2020）、Programship.com（2017–2019）
-
----
-
-### 底部联络（Contact）`src/components/ContactPanel.tsx`
-
-- Email：sisyphuslynn@gmail.com
-- 微信：wenrenws
-- GitHub：github.com/linsharon
-- 公众号：thewriterway
 
