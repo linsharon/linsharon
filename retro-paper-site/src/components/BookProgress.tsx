@@ -366,7 +366,7 @@ export default function BookProgress({ lang }: BookProgressProps) {
 
   return (
     <section className="space-y-8 font-serif">
-      <header id="researchsmith" className="rounded-lg border border-rose-200/50 bg-rose-50/60 p-5 scroll-mt-24">
+      <header id="researchsmith" className="rounded-lg border border-rose-200/50 bg-white p-5 scroll-mt-24">
         <p className="text-xs font-semibold uppercase tracking-widest text-rose-900/60">The Researchsmith</p>
         <h2 className="mt-2 text-lg font-semibold text-rose-950">
           {lang === "zh" ? "学术利他" : "Assist researchers to achieve better processes and outcomes."}
