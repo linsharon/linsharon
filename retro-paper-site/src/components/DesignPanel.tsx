@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 type ToolCard = {
   name: string;
@@ -39,6 +40,7 @@ const WECHAT_PURCHASE_MESSAGE = "请添加西西弗斯林的微信：wenrenws，
 const DESIGN_SERVICE_PAYPAL_URL_1 = "https://www.paypal.com/ncp/payment/DJ2HCFHXLUXZG";
 const DESIGN_SERVICE_PAYPAL_URL_2 = "https://www.paypal.com/ncp/payment/J6PHAJW28VARL";
 const DESIGN_SERVICE_PAYPAL_URL_3 = "https://www.paypal.com/ncp/payment/KK7SYJEUCNZHU";
+const VIBE_MANUAL_URL = "https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA3NTUwNTMwNQ==&action=getalbum&album_id=4477712477589602307#wechat_redirect";
 
 const tools: ToolCard[] = [
   {
@@ -401,6 +403,27 @@ export default function DesignPanel({ lang }: DesignPanelProps) {
           ))}
         </ol>
       </div>
+
+      <article className="rounded-lg border border-slate-200/50 bg-white p-5">
+        <h3 className="mb-4 font-semibold text-slate-900">《我的氛围编程手册》</h3>
+        <a
+          className="group block overflow-hidden rounded-lg border border-slate-200/80 bg-slate-50/50 transition hover:bg-slate-50 hover:shadow-md"
+          href={VIBE_MANUAL_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div className="relative h-36 w-full overflow-hidden rounded-t-lg border-b border-slate-200">
+            <Image
+              src="/images/image00.jpg"
+              alt="我的氛围编程手册"
+              fill
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
+              sizes="(min-width: 1024px) 33vw, 100vw"
+            />
+          </div>
+          <p className="px-3 py-3 text-sm font-medium text-slate-900 group-hover:text-slate-950">{lang === "zh" ? "进入专栏" : "Open collection"}</p>
+        </a>
+      </article>
     </section>
   );
 }
