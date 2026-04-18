@@ -7,7 +7,7 @@ type AboutPanelProps = {
 export default function AboutPanel({ lang }: AboutPanelProps) {
   return (
     <section id="about" className="mx-auto w-full max-w-7xl scroll-mt-24 px-4 pt-8 sm:px-6 lg:px-8">
-      <section className="rounded-lg border border-slate-200/50 bg-white p-5">
+      <section className="rounded-lg border border-violet-200/50 bg-violet-50/80 p-5">
         <h3 className="mb-4 text-base font-semibold tracking-tight text-slate-900">{lang === "zh" ? "关于" : "About"}</h3>
         <div className="flex items-start gap-4">
           <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full border border-slate-200/80">
