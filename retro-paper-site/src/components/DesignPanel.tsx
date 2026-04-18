@@ -234,7 +234,7 @@ export default function DesignPanel({ lang }: DesignPanelProps) {
       <header className="rounded-lg border border-slate-200/50 bg-white p-5">
         <p className="text-xs font-semibold uppercase tracking-widest text-slate-600">Designer</p>
         <h2 className="mt-2 text-lg font-semibold text-slate-900">
-          {lang === "zh" ? "设计显影" : "The Digital Manifestation of Creativity"}
+          {lang === "zh" ? "氛围编程者" : "The Digital Manifestation of Creativity"}
         </h2>
       </header>
 

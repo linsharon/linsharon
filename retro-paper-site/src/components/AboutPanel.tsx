@@ -15,18 +15,18 @@ export default function AboutPanel({ lang }: AboutPanelProps) {
           </div>
           {lang === "zh" ? (
             <div className="space-y-3 text-sm leading-relaxed text-slate-700">
-              <p>我是西西弗斯林，这里是一个学界遁逃者的“三界”。用学术利他，用文学利己，用设计显影。</p>
+              <p>我是西西弗斯林，这里是一个学界遁逃者的“三界”。用研究师利他，用私小说作者利己，用氛围编程者显影。</p>
               <ul className="space-y-2">
                 <li>
-                  <span className="font-semibold text-slate-900">学术利他：</span>
+                  <span className="font-semibold text-slate-900">研究师：</span>
                   我用过往15年学术研究的职业经验积累的知识和技能进行价值变现。不再为体制和机构写作，而是为具体的、挣扎的个体（硕博生）写作，为他们提供在学术界生存和发展的培训和咨询。这让我在财务上保持体面，在社会关系上保持活跃。
                 </li>
                 <li>
-                  <span className="font-semibold text-slate-900">文学利己：</span>
+                  <span className="font-semibold text-slate-900">私小说作者：</span>
                   我的“精神避难所”和“心境手术室”。通过私小说的写作形式，直观坦诚地凝视关于自我的真相。
                 </li>
                 <li>
-                  <span className="font-semibold text-slate-900">设计显影：</span>
+                  <span className="font-semibold text-slate-900">氛围编程者：</span>
                   我的“实验室”和“游乐场”。通过感觉编程/氛围编程（Vibe Coding），将脑中那些突如其来的灵感和创意，尽快地转化为可见、可互动的数字实体。我构建 AI 驱动、以人为中心的数字工具，服务学习、研究与知识服务场景。
                 </li>
               </ul>

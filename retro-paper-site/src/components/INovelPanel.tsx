@@ -5,7 +5,7 @@ type INovelPanelProps = {
 };
 
 export default function INovelPanel({ lang }: INovelPanelProps) {
-  const title = lang === "zh" ? "文学利己" : "Towards a better understanding of self via writing.";
+  const title = lang === "zh" ? "私小说作者" : "Towards a better understanding of self via writing.";
   const coverSrc = lang === "zh" ? "/images/image10.png" : "/images/image9.png";
 
   return (
