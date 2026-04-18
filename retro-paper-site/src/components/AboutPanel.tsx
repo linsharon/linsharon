@@ -15,7 +15,7 @@ export default function AboutPanel({ lang }: AboutPanelProps) {
           </div>
           {lang === "zh" ? (
             <div className="space-y-3 text-sm leading-relaxed text-slate-700">
-              <p>我是西西弗斯林，这里是一个学界遁逃者的“三界”。用研究师利他，用私小说作者利己，用氛围编程者显影。</p>
+              <p>我是西西弗斯林，这里是一个学界遁逃者的“三界”。</p>
               <ul className="space-y-2">
                 <li>
                   <span className="font-semibold text-slate-900">研究师：</span>
@@ -34,7 +34,7 @@ export default function AboutPanel({ lang }: AboutPanelProps) {
           ) : (
             <div className="space-y-3 text-sm leading-relaxed text-slate-700">
               <p>
-                I am Sisyphus Lynn, and here is the &quot;Three Realms&quot; of an academic escapee. I offer scientific training and consulting for altruism, write i-novels for seeking self-understanding, and design and develop digital artifacts for creativity manifestation.
+                I am Sisyphus Lynn, and here is the &quot;Three Realms&quot; of an academic escapee.
               </p>
               <p>
                 <span className="font-semibold text-slate-900">Researchsmith:</span> I monetize the knowledge and skills accumulated from 15 years of academic research. I no longer write for academic institutions, but for specific, struggling individuals (Master&apos;s and PhD students), providing them with training and consulting on survival and development within academia. This allows me to maintain financial dignity and remain active in social relationships.
