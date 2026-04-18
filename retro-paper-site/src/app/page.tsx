@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import MainLayout from "@/components/MainLayout";
+import AboutPanel from "@/components/AboutPanel";
 import BookProgress from "@/components/BookProgress";
 import INovelPanel from "@/components/INovelPanel";
 import DesignPanel from "@/components/DesignPanel";
@@ -136,6 +137,8 @@ export default function Home() {
           </nav>
         ) : null}
       </header>
+
+      <AboutPanel lang={lang} />
 
       <MainLayout
         left={
