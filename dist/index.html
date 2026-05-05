@@ -1392,10 +1392,7 @@ Zotero 一对一安装与指导服务，适合刚开始接触学术研究、正�
     </div>
   </div>
 <script>
-function openModal(id) {
-  document.getElementById('modal-' + id).classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
+
 function closeModal(id) {
   document.getElementById('modal-' + id).classList.remove('open');
   document.body.style.overflow = '';
@@ -1447,23 +1444,63 @@ function jumpToMarket(type) {
   }, 600);
 }
 
-function submitReview(pid) {
+const API_BASE = 'https://workspace.researchic.com';
+
+async function loadReviews(pid) {
+  try {
+    const res = await fetch(API_BASE + '/api/reviews/' + pid);
+    if (!res.ok) return;
+    const reviews = await res.json();
+    const modal = document.getElementById('modal-' + pid);
+    if (!modal) return;
+    const reviewsDiv = modal.querySelector('.modal-reviews');
+    const form = reviewsDiv.querySelector('.review-form');
+    // Remove existing dynamic review items
+    reviewsDiv.querySelectorAll('.review-item.dynamic').forEach(el => el.remove());
+    // Insert loaded reviews before the form
+    reviews.forEach(r => {
+      const item = document.createElement('div');
+      item.className = 'review-item dynamic';
+      item.innerHTML = '<div class="review-text">"' + r.content + '"</div><div class="review-author">— ' + r.nickname + '</div>';
+      reviewsDiv.insertBefore(item, form);
+    });
+  } catch(e) {}
+}
+
+function openModal(id) {
+  document.getElementById('modal-' + id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+  loadReviews(id);
+}
+
+async function submitReview(pid) {
   const name = document.getElementById('rname-' + pid).value.trim();
   const text = document.getElementById('rtext-' + pid).value.trim();
   if (!name || !text) return;
-  // Add review to list
-  const reviewsDiv = document.getElementById('modal-' + pid).querySelector('.modal-reviews');
-  const item = document.createElement('div');
-  item.className = 'review-item';
-  item.innerHTML = '<div class="review-text">"' + text + '"</div><div class="review-author">— ' + name + '</div>';
-  reviewsDiv.insertBefore(item, reviewsDiv.querySelector('.review-form'));
-  // Clear inputs
-  document.getElementById('rname-' + pid).value = '';
-  document.getElementById('rtext-' + pid).value = '';
-  // Show thanks
-  const thanks = document.getElementById('rthanks-' + pid);
-  thanks.style.display = 'block';
-  setTimeout(() => { thanks.style.display = 'none'; }, 3000);
+  const btn = document.querySelector('#modal-' + pid + ' .review-submit');
+  btn.disabled = true;
+  btn.textContent = '提交中…';
+  try {
+    const res = await fetch(API_BASE + '/api/reviews', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ product_id: pid, nickname: name, content: text })
+    });
+    if (res.ok) {
+      document.getElementById('rname-' + pid).value = '';
+      document.getElementById('rtext-' + pid).value = '';
+      const thanks = document.getElementById('rthanks-' + pid);
+      thanks.style.display = 'block';
+      setTimeout(() => { thanks.style.display = 'none'; }, 4000);
+    } else {
+      alert('提交失败，请稍后再试。');
+    }
+  } catch(e) {
+    alert('网络错误，请检查连接后重试。');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '提交评价';
+  }
 }
 </script>
   <div class="modal-overlay" id="modal-p14">
