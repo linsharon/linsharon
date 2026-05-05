@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="ResearchIC favicon">
+  <rect width="64" height="64" rx="12" fill="#0e0d0b"/>
+  <rect x="11" y="10" width="6" height="44" rx="3" fill="#c8882a"/>
+  <path d="M17 10 H29 C38 10 43 14 43 21 C43 29 38 33 29 35 H17"
+        fill="none" stroke="#c8882a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="27" y1="35" x2="41" y2="50" stroke="#c8882a" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="48" cy="13" r="5" fill="#c8882a" opacity="0.5"/>
+</svg>
