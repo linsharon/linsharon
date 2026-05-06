@@ -909,7 +909,7 @@ footer {
 </section>
 
 <!-- MARKET -->
-<section class="section reveal" id="market">
+<section class="section" id="market">
   <div class="section-eyebrow">小卖一场</div>
   <h2 class="section-title">我的创作</h2>
   <div class="market-filter">
@@ -922,261 +922,17 @@ footer {
     <button class="filter-btn" onclick="filterCards('service',this)">服务</button>
   </div>
   <div class="market-grid" id="marketGrid">
-    <div class="market-card" data-type="tool">
-<div class="market-card-info" onclick="openModal('p01')">
-        <div class="market-tag">工具</div>
-        <div class="market-name">Research Workspace</div>
-        <div class="market-desc">从文献发现到初稿，一个连续的学术阅读与写作工作台。</div>
-        <span class="price-tag">免费账户 ¥0 · 高级账户 ¥99/年</span>
-      </div>
-<div class="market-card-actions">
-        <a href="https://workspace.researchic.com" class="btn-a" style="white-space:nowrap;" target="_blank" rel="noopener">速去围观 →</a>
-        <span class="modal-hint" onclick="openModal('p01')">详情 →</span>
-      </div>
-    </div>
-    <div class="market-card" data-type="course">
-<div class="market-card-info" onclick="openModal('p02')">
-        <div class="market-tag">课程</div>
-        <div class="market-name">把 Zotero 变成你的第二大脑</div>
-        <div class="market-desc">四节视频课，帮你把 Zotero 从软件变成真正的学术第二大脑。</div>
-        <span class="price-tag">¥380</span>
-      </div>
-<div class="market-card-actions">
-        <a href="https://mp.weixin.qq.com/s/HpTtLTC53-2KBKnv27LLHw" class="btn-a" style="white-space:nowrap;" target="_blank" rel="noopener">速去围观 →</a>
-        <span class="modal-hint" onclick="openModal('p02')">详情 →</span>
-      </div>
-    </div>
-    <div class="market-card" data-type="service">
-<div class="market-card-info" onclick="openModal('p10')">
-        <div class="market-tag">服务</div>
-        <div class="market-name">留学文书润色与提升</div>
-        <div class="market-desc">从结构、逻辑到语言，帮你把真实的自己准确表达出来。</div>
-        <span class="price-tag">¥2,000/份 起</span>
-      </div>
-<div class="market-card-actions">
-        <a href="#contact" class="btn-a" style="white-space:nowrap;">联系 →</a>
-        <span class="modal-hint" onclick="openModal('p10')">详情 →</span>
-      </div>
-    </div>
-    <div class="market-card" data-type="service">
-<div class="market-card-info" onclick="openModal('p11')">
-        <div class="market-tag">服务</div>
-        <div class="market-name">留学申请咨询</div>
-        <div class="market-desc">帮你看清背景、定位目标，制定一套清醒稳妥的申请方案。</div>
-        <span class="price-tag">面议</span>
-      </div>
-<div class="market-card-actions">
-        <a href="#contact" class="btn-a" style="white-space:nowrap;">联系 →</a>
-        <span class="modal-hint" onclick="openModal('p11')">详情 →</span>
-      </div>
-    </div>
-    <div class="market-card" data-type="service">
-<div class="market-card-info" onclick="openModal('p12')">
-        <div class="market-tag">服务</div>
-        <div class="market-name">学术科研咨询</div>
-        <div class="market-desc">陪你从模糊兴趣走向清晰的研究问题、框架和写作方案。</div>
-        <span class="price-tag">¥1,500/小时</span>
-      </div>
-<div class="market-card-actions">
-        <a href="#contact" class="btn-a" style="white-space:nowrap;">联系 →</a>
-        <span class="modal-hint" onclick="openModal('p12')">详情 →</span>
-      </div>
-    </div>
-    <div class="market-card" data-type="service">
-<div class="market-card-info" onclick="openModal('p14')">
-        <div class="market-tag">服务</div>
-        <div class="market-name">网站设计和开发</div>
-        <div class="market-desc">从定位到上线，帮你搭建一个真正为业务服务的线上空间。</div>
-        <span class="price-tag">面议</span>
-      </div>
-<div class="market-card-actions">
-        <a href="#contact" class="btn-a" style="white-space:nowrap;">联系 →</a>
-        <span class="modal-hint" onclick="openModal('p14')">详情 →</span>
-      </div>
-    </div>
-    <div class="market-card" data-type="service">
-<div class="market-card-info" onclick="openModal('p13')">
-        <div class="market-tag">服务</div>
-        <div class="market-name">Zotero 一对一安装与指导</div>
-        <div class="market-desc">手把手带你装好用好 Zotero，建立稳定的文献管理工作流。</div>
-        <span class="price-tag">¥500</span>
-      </div>
-<div class="market-card-actions">
-        <a href="#contact" class="btn-a" style="white-space:nowrap;">联系 →</a>
-        <span class="modal-hint" onclick="openModal('p13')">详情 →</span>
-      </div>
-    </div>
-    <div class="market-card" data-type="book">
-<div class="market-card-info" onclick="openModal('p03')">
-        <div class="market-tag">书</div>
-        <div class="market-name">Rooting: Searching for Meaning in Unfinished Paths</div>
-        <div class="market-desc">A short memoir about ADHD, academia, and the meaning found in unfinished paths.</div>
-        
-      </div>
-<div class="market-card-actions">
-        <a href="https://www.goodreads.com/en/book/show/239089779-rooting" class="btn-a" style="white-space:nowrap;" target="_blank" rel="noopener">阅读 →</a>
-        <span class="modal-hint" onclick="openModal('p03')">详情 →</span>
-      </div>
-    </div>
-    <div class="market-card" data-type="book">
-<div class="market-card-info" onclick="openModal('p04')">
-        <div class="market-tag">书</div>
-        <div class="market-name">《生根》</div>
-        <div class="market-desc">《Rooting》中文版。关于出走学界、重新生根的回忆录。</div>
-        <span class="price-tag">¥300 微信豆</span>
-      </div>
-<div class="market-card-actions">
-        <a href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA3NTUwNTMwNQ==&action=getalbum&album_id=4441770263470456838&from_itemidx=2&from_msgid=2447562741&subscene=126&scenenote=https%3A%2F%2Fmp.weixin.qq.com%2Fs%3F__biz%3DMzA3NTUwNTMwNQ%253D%253D%26mid%3D2447562741%26idx%3D2%26sn%3D68436e21a4afe3172f4e5078da657f94%26chksm%3D8a333c14c9f26ffb6fd9cdf7f7709cd359397b14a895d13e94f5458fecf996af574e74c36de1%26forbs%3D1%26scene%3D126%26subscene%3D91%26sessionid%3D1777950079%26flutter_pos%3D19%26clicktime%3D1777950101%26enterid%3D1777950101%26finder_biz_enter_id%3D5%26jumppath%3D1001_1777949706567%252C50094_1777950079865%252C20020_1777950091385%252C50094_1777950092169%26jumppathdepth%3D4%26ascene%3D56%26fasttmpl_type%3D0%26fasttmpl_fullversion%3D8237539-zh_CN-zip%26fasttmpl_flag%3D0%26realreporttime%3D1777950101632%26devicetype%3Dandroid-36%26version%3D28004737%26nettype%3DWIFI%26lang%3Dzh_CN%26session_us%3Dgh_a9fce0afca11%26countrycode%3DCN%26exportkey%3Dn_ChQIAhIQCJO1rBiOg0mcbU3bqdzYrBLwAQIE97dBBAEAAAAAADFeJxQYB6QAAAAOpnltbLcz9gKNyK89dVj0FEnq2wtDHyzYHEjpD1AWSEp7ye7lgZG8McC%252FlylUMugI8HkxvYQ%252BHiX5inWo%252FowsayunqtJXpt90PLwlu33EjN44v47yLAlaXll%252BlasPl5foGlH%252FD41u9%252BUAkJ2jjPMQCpjXS2PovTGlSDZ5AZmylwnOOohk%252B6isV3bD%252BolzSwCPQMJn9YkA3Vbte4gUSW2cMWLM9MIz5u78e4ozaXT27uPCnR7US4iFgb2dpgFw6QY80vdFVaBa68HoflAeA0NytjTTUUnYi0JRdQ%253D%253D%26pass_ticket%3D4JF1ig3dBoPZ0axg6Gh%252F7DK4TKdaTwWV%252BFeVZjZu65F2pLRBHC87BxJcHuEkYMcd%26wx_header%3D3&nolastread=1#wechat_redirect" class="btn-a" style="white-space:nowrap;" target="_blank" rel="noopener">阅读 →</a>
-        <span class="modal-hint" onclick="openModal('p04')">详情 →</span>
-      </div>
-    </div>
-    <div class="market-card" data-type="book">
-<div class="market-card-info" onclick="openModal('p02')">
-        <div class="market-tag">书</div>
-        <div class="market-name">《把 Zotero 变成你的第二大脑》</div>
-        <div class="market-desc">128页用 Zotero 做科研读写的实战指南，覆盖从安装配置到协作备份的完整周期。</div>
-        <span class="price-tag">¥99</span>
-      </div>
-<div class="market-card-actions">
-        <a href="https://mp.weixin.qq.com/s/HpTtLTC53-2KBKnv27LLHw" class="btn-a" style="white-space:nowrap;" target="_blank" rel="noopener">阅读 →</a>
-        <span class="modal-hint" onclick="openModal('p02')">详情 →</span>
-      </div>
-    </div>
-    <div class="market-card" data-type="blog">
-<div class="market-card-info" onclick="openModal('p05')">
-        <div class="market-tag">博客</div>
-        <div class="market-name">The Writer Way 公众号</div>
-        <div class="market-desc">写给硕博生和青年学者的学术操作系统与精神栖息地。</div>
-        <span class="price-tag">免费</span>
-      </div>
-<div class="market-card-actions">
-        <a href="https://mp.weixin.qq.com/s/x_5zTKAjwm6VBPF4a_bXSg" class="btn-a" style="white-space:nowrap;" target="_blank" rel="noopener">订阅 →</a>
-        <span class="modal-hint" onclick="openModal('p05')">详情 →</span>
-      </div>
-    </div>
-    <div class="market-card" data-type="blog">
-<div class="market-card-info" onclick="openModal('p06')">
-        <div class="market-tag">博客</div>
-        <div class="market-name">西西弗斯林的研究笔记</div>
-        <div class="market-desc">一套付费文集，把学术阅读、写作和研究方法拆开来讲清楚。</div>
-        <span class="price-tag">¥380</span>
-      </div>
-<div class="market-card-actions">
-        <a href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA3NTUwNTMwNQ==&action=getalbum&album_id=4441820203487903745&from_itemidx=1&from_msgid=2447563287#wechat_redirect" class="btn-a" style="white-space:nowrap;" target="_blank" rel="noopener">订阅 →</a>
-        <span class="modal-hint" onclick="openModal('p06')">详情 →</span>
-      </div>
-    </div>
-    <div class="market-card" data-type="blog">
-<div class="market-card-info" onclick="openModal('p07')">
-        <div class="market-tag">博客</div>
-        <div class="market-name">正文带括号</div>
-        <div class="market-desc">出版作者西西弗斯林的粉丝星球，正文是作品，括号是真实的人。</div>
-        <span class="price-tag">¥99/年</span>
-      </div>
-<div class="market-card-actions">
-        <a href="https://t.zsxq.com/SfrRY" class="btn-a" style="white-space:nowrap;" target="_blank" rel="noopener">订阅 →</a>
-        <span class="modal-hint" onclick="openModal('p07')">详情 →</span>
-      </div>
-    </div>
-    <div class="market-card" data-type="community">
-<div class="market-card-info" onclick="openModal('p08')">
-        <div class="market-tag">社群</div>
-        <div class="market-name">学术101</div>
-        <div class="market-desc">知识星球+微信群，朋辈讨论，共建认真对待研究的在线社群。</div>
-        <span class="price-tag">¥99/年</span>
-      </div>
-<div class="market-card-actions">
-        <a href="https://t.zsxq.com/IglwK" class="btn-a" style="white-space:nowrap;" target="_blank" rel="noopener">加入 →</a>
-        <span class="modal-hint" onclick="openModal('p08')">详情 →</span>
-      </div>
-    </div>
-    <div class="market-card" data-type="community">
-<div class="market-card-info" onclick="openModal('p09')">
-        <div class="market-tag">社群</div>
-        <div class="market-name">The Writer Way免费群</div>
-        <div class="market-desc">The Writer Way 粉丝聚集的微信群，分享文章与活动资讯。</div>
-        <span class="price-tag">免费</span>
-      </div>
-<div class="market-card-actions">
-        <a href="#contact" class="btn-a" style="white-space:nowrap;">加入 →</a>
-        <span class="modal-hint" onclick="openModal('p09')">详情 →</span>
-      </div>
-    </div>
-      </div>
+    <div style="grid-column:1/-1;padding:2rem;text-align:center;color:var(--muted);font-size:.85rem;">加载中…</div>
+  </div>
 </section>
 
 <!-- INCOME -->
-<section class="section reveal" id="income">
+<section class="section" id="income">
   <div class="section-eyebrow">不上班活下去</div>
   <h2 class="section-title">这条路，我走了多久</h2>
-
-  <div class="timeline">
+  <div class="timeline" id="timelineGrid">
     <div class="tl-hint">点击每个事件了解更多</div>
-    <div class="tl-item">
-      <div class="tl-date">2024 · 10</div>
-      <div class="tl-dot"></div>
-      <div class="tl-body tl-body--clickable" onclick="openTlModal('tl01')">裸辞大学助理教授职位 <span class="tl-arrow">→</span></div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-date">2024 · 12</div>
-      <div class="tl-dot"></div>
-      <div class="tl-body tl-body--clickable" onclick="openTlModal('tl02')">开始着手写作 Rooting <span class="tl-arrow">→</span></div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-date">2025 · 05</div>
-      <div class="tl-dot"></div>
-      <div class="tl-body tl-body--clickable" onclick="openTlModal('tl03')">Rooting 定稿 <span class="tl-arrow">→</span></div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-date">2025 · 07</div>
-      <div class="tl-dot"></div>
-      <div class="tl-body tl-body--clickable" onclick="openTlModal('tl04')">Rooting 上线 Amazon <span class="tl-arrow">→</span></div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-date">2025 · 08</div>
-      <div class="tl-dot"></div>
-      <div class="tl-body tl-body--clickable" onclick="openTlModal('tl05')">与 Routledge 出版社签约，启动第二本书 <span class="tl-arrow">→</span></div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-date">2025 · 11</div>
-      <div class="tl-dot"></div>
-      <div class="tl-body tl-body--clickable" onclick="openTlModal('tl06')">开始写公众号 The Writer Way <span class="tl-arrow">→</span></div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-date">2025 · 12</div>
-      <div class="tl-dot"></div>
-      <div class="tl-body tl-body--clickable" onclick="openTlModal('tl07')">开始翻译 Rooting，并进行大量扩写，写成《生根》 <span class="tl-arrow">→</span></div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-date">2026 · 01</div>
-      <div class="tl-dot"></div>
-      <div class="tl-body tl-body--clickable" onclick="openTlModal('tl08')">以一人公司的业务模式开始线上接单 <span class="tl-arrow">→</span></div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-date">2026 · 03</div>
-      <div class="tl-dot"></div>
-      <div class="tl-body tl-body--clickable" onclick="openTlModal('tl09')">开始探索更具复利模式的产品和服务 <span class="tl-arrow">→</span></div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-date">2026 · 04</div>
-      <div class="tl-dot"></div>
-      <div class="tl-body tl-body--clickable" onclick="openTlModal('tl10')">意外写了一本《把 Zotero 变成你的第二大脑》 <span class="tl-arrow">→</span></div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-date">2026 · 05 · 05</div>
-      <div class="tl-dot"></div>
-      <div class="tl-body tl-body--clickable" onclick="openTlModal('tl11')">公众号订阅人数达到 5,600 人 <span class="tl-arrow">→</span></div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-date">2026 · 05</div>
-      <div class="tl-dot"></div>
-      <div class="tl-body tl-body--clickable" onclick="openTlModal('tl13')">《把 Zotero 变成你的第二大脑》在飞书上线 <span class="tl-arrow">→</span></div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-date">2026 · 05</div>
-      <div class="tl-dot"></div>
-      <div class="tl-body tl-body--clickable" onclick="openTlModal('tl12')">重回 Routledge 签约书的创作，同时开始构思第三本书 <span class="tl-arrow">→</span></div>
-    </div>
+    <div style="padding:1rem 0;color:var(--muted);font-size:.85rem;">加载中…</div>
   </div>
 </section>
 
@@ -1933,6 +1689,161 @@ async function submitReview(pid) {
     btn.textContent = '提交评价';
   }
 }
+
+
+// ── CMS DYNAMIC LOADER ────────────────────────────────────
+const CMS_API = 'https://workspace.researchic.com';
+let _currentFilter = 'all';
+let _allCards = [];
+
+function esc(s) {
+  return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function renderCards(cards, type) {
+  const grid = document.getElementById('marketGrid');
+  if (!grid) return;
+  const filtered = type === 'all' ? cards : cards.filter(c => c.data_type === type);
+  if (filtered.length === 0) {
+    grid.innerHTML = '<div style="grid-column:1/-1;padding:3rem;text-align:center;color:rgba(245,240,232,0.2);font-family:Lora,serif;font-style:italic;">暂无内容</div>';
+    return;
+  }
+  grid.innerHTML = filtered.map(c => {
+    const target = c.btn_external ? ' target="_blank" rel="noopener"' : '';
+    const href = c.btn_href || '#contact';
+    const isAnchor = href.startsWith('#');
+    const clickHandler = isAnchor ? `onclick="event.preventDefault();closeAllModals('${href}')"` : '';
+    return `<div class="market-card" data-type="${c.data_type}">
+      <div class="market-card-info" onclick="openCmsModal('${c.product_id}')" style="cursor:pointer;">
+        <div class="market-tag">${esc(c.data_type)}</div>
+        <div class="market-name">${esc(c.name)}</div>
+        <div class="market-desc">${esc(c.desc_short)}</div>
+        ${c.price_label ? '<span class="price-tag">'+esc(c.price_label)+'</span>' : ''}
+      </div>
+      <div class="market-card-actions">
+        <a href="${href}"${target} class="btn-a" style="white-space:nowrap;" ${clickHandler}>${esc(c.btn_text)} →</a>
+        <span class="modal-hint" onclick="openCmsModal('${c.product_id}')" style="cursor:pointer;">详情 →</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function filterCards(type, btn) {
+  _currentFilter = type;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  renderCards(_allCards, type);
+}
+
+function openCmsModal(productId) {
+  const card = _allCards.find(c => c.product_id === productId);
+  if (!card) return;
+  let modal = document.getElementById('dyn-modal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'dyn-modal';
+    modal.className = 'modal-overlay';
+    modal.addEventListener('click', e => { if(e.target===modal) closeDynModal(); });
+    document.body.appendChild(modal);
+  }
+  document.addEventListener('keydown', function escHandler(e) {
+    if(e.key==='Escape'){ closeDynModal(); document.removeEventListener('keydown',escHandler); }
+  });
+  const target = card.btn_external ? ' target="_blank" rel="noopener"' : '';
+  const href = card.btn_href || '#contact';
+  const isAnchor = href.startsWith('#');
+  const clickHandler = isAnchor ? `onclick="event.preventDefault();closeDynModal();closeAllModals('${href}')"` : '';
+  modal.innerHTML = `<div class="modal-box">
+    <button class="modal-close" onclick="closeDynModal()">×</button>
+    <div class="modal-head">
+      <div class="modal-tag">${esc(card.data_type)}</div>
+      <div class="modal-title">${esc(card.name)}</div>
+      <div class="modal-price-row"><span class="modal-price-label">${esc(card.price_label||'')}</span></div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-desc">${esc(card.desc_long||card.desc_short)}</div>
+    </div>
+    <div class="modal-footer">
+      <a href="${href}"${target} class="btn-a" style="white-space:nowrap;" ${clickHandler}>${esc(card.btn_text)} →</a>
+    </div>
+  </div>`;
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDynModal() {
+  const m = document.getElementById('dyn-modal');
+  if(m) m.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Timeline
+async function loadTimeline() {
+  try {
+    const res = await fetch(CMS_API + '/api/cms/events');
+    const data = await res.json();
+    window._tlData = data;
+    const grid = document.getElementById('timelineGrid');
+    if (!grid || !data.length) return;
+    grid.innerHTML = '<div class="tl-hint">点击每个事件了解更多</div>' +
+      data.map(e => {
+        const ev = e.event;
+        return `<div class="tl-item">
+          <div class="tl-date">${esc(ev.date_label)}</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body tl-body--clickable" onclick="openTlCmsModal('${ev.event_id}')">${esc(ev.title)} <span class="tl-arrow">→</span></div>
+        </div>`;
+      }).join('');
+  } catch(e) {}
+}
+
+function openTlCmsModal(eventId) {
+  const entry = (window._tlData||[]).find(e => e.event.event_id === eventId);
+  if (!entry) return;
+  const ev = entry.event;
+  let modal = document.getElementById('dyn-tl-modal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'dyn-tl-modal';
+    modal.className = 'modal-overlay';
+    modal.addEventListener('click', e => { if(e.target===modal) closeTlCmsModal(); });
+    document.body.appendChild(modal);
+  }
+  modal.innerHTML = `<div class="modal-box">
+    <button class="modal-close" onclick="closeTlCmsModal()">×</button>
+    <div class="modal-head">
+      <div class="modal-tag">不上班活下去</div>
+      <div class="modal-title">${esc(ev.title)}</div>
+      <div class="modal-price-row"><span class="modal-price-label">${esc(ev.date_label)}</span></div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-desc">${esc(ev.body||'')}</div>
+    </div>
+  </div>`;
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeTlCmsModal() {
+  const m = document.getElementById('dyn-tl-modal');
+  if(m) m.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Init on load
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const [cardsRes] = await Promise.all([
+      fetch(CMS_API + '/api/cms/cards'),
+      loadTimeline()
+    ]);
+    if (cardsRes.ok) {
+      _allCards = await cardsRes.json();
+      renderCards(_allCards, 'all');
+    }
+  } catch(e) { console.error('CMS load error:', e); }
+});
+
 </script>
   <div class="modal-overlay" id="modal-p14">
     <div class="modal-box">
