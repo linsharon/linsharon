@@ -1661,24 +1661,29 @@ function openModal(id) {
 }
 
 async function submitReview(pid) {
-  const name = document.getElementById('rname-' + pid).value.trim();
-  const text = document.getElementById('rtext-' + pid).value.trim();
+  const nameEl = document.getElementById('rname-' + pid);
+  const textEl = document.getElementById('rtext-' + pid);
+  if (!nameEl || !textEl) return;
+  const name = nameEl.value.trim();
+  const text = textEl.value.trim();
   if (!name || !text) return;
   const btn = document.querySelector('#modal-' + pid + ' .review-submit')
            || document.querySelector('#dyn-modal .review-submit');
   if (btn) { btn.disabled = true; btn.textContent = '提交中…'; }
+  const apiBase = typeof CMS_API !== 'undefined' ? CMS_API
+                : typeof API_BASE !== 'undefined' ? API_BASE
+                : 'https://workspace.researchic.com';
   try {
-    const res = await fetch(API_BASE + '/api/reviews', {
+    const res = await fetch(apiBase + '/api/reviews', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ product_id: pid, nickname: name, content: text })
     });
     if (res.ok) {
-      document.getElementById('rname-' + pid).value = '';
-      document.getElementById('rtext-' + pid).value = '';
+      nameEl.value = '';
+      textEl.value = '';
       const thanks = document.getElementById('rthanks-' + pid);
-      thanks.style.display = 'block';
-      setTimeout(() => { thanks.style.display = 'none'; }, 4000);
+      if (thanks) { thanks.style.display = 'block'; setTimeout(() => { thanks.style.display = 'none'; }, 4000); }
     } else {
       alert('提交失败，请稍后再试。');
     }
@@ -1781,11 +1786,11 @@ async function openCmsModal(productId) {
       <div class="review-form">
         <div class="review-form-label">留下你的评价</div>
         <div class="review-form-row">
-          <input class="review-input" id="rname-${card.product_id}" placeholder="你的昵称" type="text">
+          <input class="review-input" id="rname-p13" placeholder="你的昵称" type="text">
         </div>
-        <textarea class="review-textarea" id="rtext-${card.product_id}" placeholder="写下你的使用感受…"></textarea>
-        <button class="review-submit" onclick="submitReview('${card.product_id}')">提交评价</button>
-        <div class="review-thanks" id="rthanks-${card.product_id}" style="display:none;">谢谢你的反馈，我收到了。</div>
+        <textarea class="review-textarea" id="rtext-p13" placeholder="写下你的使用感受…"></textarea>
+        <button class="review-submit" onclick="submitReview('p13')">提交评价</button>
+        <div class="review-thanks" id="rthanks-p13" style="display:none;">谢谢你的反馈，我收到了。</div>
       </div>
     </div>
     <div class="modal-footer">
