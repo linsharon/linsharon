@@ -1265,11 +1265,11 @@ The Writer Way 最打动人的地方，在于它不只是谈论"事"的学术，
       <div class="review-form">
         <div class="review-form-label">留下你的评价</div>
         <div class="review-form-row">
-          <input class="review-input" id="rname-p07" placeholder="你的昵称" type="text">
+          <input class="review-input" id="rname-p06" placeholder="你的昵称" type="text">
         </div>
-        <textarea class="review-textarea" id="rtext-p07" placeholder="写下你的使用感受…"></textarea>
-        <button class="review-submit" onclick="submitReview('p07')">提交评价</button>
-        <div class="review-thanks" id="rthanks-p07">谢谢你的反馈，我收到了。</div>
+        <textarea class="review-textarea" id="rtext-p06" placeholder="写下你的使用感受…"></textarea>
+        <button class="review-submit" onclick="submitReview('p06')">提交评价</button>
+        <div class="review-thanks" id="rthanks-p06">谢谢你的反馈，我收到了。</div>
       </div>
     </div>
       </div>
@@ -1423,11 +1423,11 @@ The Writer Way 最打动人的地方，在于它不只是谈论"事"的学术，
       <div class="review-form">
         <div class="review-form-label">留下你的评价</div>
         <div class="review-form-row">
-          <input class="review-input" id="rname-p09" placeholder="你的昵称" type="text">
+          <input class="review-input" id="rname-p10" placeholder="你的昵称" type="text">
         </div>
-        <textarea class="review-textarea" id="rtext-p09" placeholder="写下你的使用感受…"></textarea>
-        <button class="review-submit" onclick="submitReview('p09')">提交评价</button>
-        <div class="review-thanks" id="rthanks-p09">谢谢你的反馈，我收到了。</div>
+        <textarea class="review-textarea" id="rtext-p10" placeholder="写下你的使用感受…"></textarea>
+        <button class="review-submit" onclick="submitReview('p10')">提交评价</button>
+        <div class="review-thanks" id="rthanks-p10">谢谢你的反馈，我收到了。</div>
       </div>
     </div>
       </div>
@@ -1513,11 +1513,11 @@ The Writer Way 最打动人的地方，在于它不只是谈论"事"的学术，
       <div class="review-form">
         <div class="review-form-label">留下你的评价</div>
         <div class="review-form-row">
-          <input class="review-input" id="rname-p13" placeholder="你的昵称" type="text">
+          <input class="review-input" id="rname-p12" placeholder="你的昵称" type="text">
         </div>
-        <textarea class="review-textarea" id="rtext-p13" placeholder="写下你的使用感受…"></textarea>
-        <button class="review-submit" onclick="submitReview('p13')">提交评价</button>
-        <div class="review-thanks" id="rthanks-p13">谢谢你的反馈，我收到了。</div>
+        <textarea class="review-textarea" id="rtext-p12" placeholder="写下你的使用感受…"></textarea>
+        <button class="review-submit" onclick="submitReview('p12')">提交评价</button>
+        <div class="review-thanks" id="rthanks-p12">谢谢你的反馈，我收到了。</div>
       </div>
     </div>
       </div>
@@ -1661,30 +1661,24 @@ function openModal(id) {
 }
 
 async function submitReview(pid) {
-  const nameEl = document.getElementById('rname-' + pid);
-  const textEl = document.getElementById('rtext-' + pid);
-  if (!nameEl || !textEl) return;
-  const name = nameEl.value.trim();
-  const text = textEl.value.trim();
+  const name = document.getElementById('rname-' + pid).value.trim();
+  const text = document.getElementById('rtext-' + pid).value.trim();
   if (!name || !text) return;
-  // Support both static modals (#modal-p01) and dynamic modal (#dyn-modal)
   const btn = document.querySelector('#modal-' + pid + ' .review-submit')
            || document.querySelector('#dyn-modal .review-submit');
   if (btn) { btn.disabled = true; btn.textContent = '提交中…'; }
-  const apiBase = typeof CMS_API !== 'undefined' ? CMS_API
-                : typeof API_BASE !== 'undefined' ? API_BASE
-                : 'https://workspace.researchic.com';
   try {
-    const res = await fetch(apiBase + '/api/reviews', {
+    const res = await fetch(API_BASE + '/api/reviews', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ product_id: pid, nickname: name, content: text })
     });
     if (res.ok) {
-      nameEl.value = '';
-      textEl.value = '';
+      document.getElementById('rname-' + pid).value = '';
+      document.getElementById('rtext-' + pid).value = '';
       const thanks = document.getElementById('rthanks-' + pid);
-      if (thanks) { thanks.style.display = 'block'; setTimeout(() => { thanks.style.display = 'none'; }, 4000); }
+      thanks.style.display = 'block';
+      setTimeout(() => { thanks.style.display = 'none'; }, 4000);
     } else {
       alert('提交失败，请稍后再试。');
     }
@@ -1787,11 +1781,11 @@ async function openCmsModal(productId) {
       <div class="review-form">
         <div class="review-form-label">留下你的评价</div>
         <div class="review-form-row">
-          <input class="review-input" id="rname-${productId}" placeholder="你的昵称" type="text">
+          <input class="review-input" id="rname-p13" placeholder="你的昵称" type="text">
         </div>
-        <textarea class="review-textarea" id="rtext-${productId}" placeholder="写下你的使用感受…"></textarea>
-        <button class="review-submit" onclick="submitReview('${productId}')">提交评价</button>
-        <div class="review-thanks" id="rthanks-${productId}" style="display:none;">谢谢你的反馈，我收到了。</div>
+        <textarea class="review-textarea" id="rtext-p13" placeholder="写下你的使用感受…"></textarea>
+        <button class="review-submit" onclick="submitReview('p13')">提交评价</button>
+        <div class="review-thanks" id="rthanks-p13" style="display:none;">谢谢你的反馈，我收到了。</div>
       </div>
     </div>
     <div class="modal-footer">
