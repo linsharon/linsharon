@@ -1735,7 +1735,7 @@ function filterCards(type, btn) {
   renderCards(_allCards, type);
 }
 
-function openCmsModal(productId) {
+async function openCmsModal(productId) {
   const card = _allCards.find(c => c.product_id === productId);
   if (!card) return;
   let modal = document.getElementById('dyn-modal');
@@ -1753,6 +1753,19 @@ function openCmsModal(productId) {
   const href = card.btn_href || '#contact';
   const isAnchor = href.startsWith('#');
   const clickHandler = isAnchor ? `onclick="event.preventDefault();closeDynModal();closeAllModals('${href}')"` : '';
+
+  // Load existing reviews
+  let reviewsHtml = '';
+  try {
+    const rres = await fetch(CMS_API + '/api/reviews/' + productId);
+    const reviews = await rres.json();
+    if (reviews.length > 0) {
+      reviewsHtml = reviews.map(r =>
+        `<div class="review-item"><div class="review-text">"${esc(r.content)}"</div><div class="review-author">— ${esc(r.nickname)}</div></div>`
+      ).join('');
+    }
+  } catch(e) {}
+
   modal.innerHTML = `<div class="modal-box">
     <button class="modal-close" onclick="closeDynModal()">×</button>
     <div class="modal-head">
@@ -1762,6 +1775,19 @@ function openCmsModal(productId) {
     </div>
     <div class="modal-body">
       <div class="modal-desc">${esc(card.desc_long||card.desc_short)}</div>
+    </div>
+    <div class="modal-reviews">
+      <div class="modal-reviews-label">读者 / 用户评价</div>
+      <div id="reviews-${productId}">${reviewsHtml}</div>
+      <div class="review-form">
+        <div class="review-form-label">留下你的评价</div>
+        <div class="review-form-row">
+          <input class="review-input" id="rname-${productId}" placeholder="你的昵称" type="text">
+        </div>
+        <textarea class="review-textarea" id="rtext-${productId}" placeholder="写下你的使用感受…"></textarea>
+        <button class="review-submit" onclick="submitReview('${productId}')">提交评价</button>
+        <div class="review-thanks" id="rthanks-${productId}" style="display:none;">谢谢你的反馈，我收到了。</div>
+      </div>
     </div>
     <div class="modal-footer">
       <a href="${href}"${target} class="btn-a" style="white-space:nowrap;" ${clickHandler}>${esc(card.btn_text)} →</a>
