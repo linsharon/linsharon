@@ -1667,10 +1667,13 @@ async function submitReview(pid) {
   const name = nameEl.value.trim();
   const text = textEl.value.trim();
   if (!name || !text) return;
-  const btn = document.querySelector('.modal-overlay.open .review-submit')
+  // Support both static modals (#modal-p01) and dynamic modal (#dyn-modal)
+  const btn = document.querySelector('#modal-' + pid + ' .review-submit')
            || document.querySelector('#dyn-modal .review-submit');
   if (btn) { btn.disabled = true; btn.textContent = '提交中…'; }
-  const apiBase = typeof CMS_API !== 'undefined' ? CMS_API : typeof API_BASE !== 'undefined' ? API_BASE : 'https://workspace.researchic.com';
+  const apiBase = typeof CMS_API !== 'undefined' ? CMS_API
+                : typeof API_BASE !== 'undefined' ? API_BASE
+                : 'https://workspace.researchic.com';
   try {
     const res = await fetch(apiBase + '/api/reviews', {
       method: 'POST',
