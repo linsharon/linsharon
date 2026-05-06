@@ -1827,6 +1827,7 @@ function openTlCmsModal(eventId) {
   const entry = (window._tlData||[]).find(e => e.event.event_id === eventId);
   if (!entry) return;
   const ev = entry.event;
+  const buttons = entry.buttons || [];
   let modal = document.getElementById('dyn-tl-modal');
   if (!modal) {
     modal = document.createElement('div');
@@ -1835,6 +1836,16 @@ function openTlCmsModal(eventId) {
     modal.addEventListener('click', e => { if(e.target===modal) closeTlCmsModal(); });
     document.body.appendChild(modal);
   }
+  document.addEventListener('keydown', function escTl(e) {
+    if(e.key==='Escape'){ closeTlCmsModal(); document.removeEventListener('keydown',escTl); }
+  });
+  const btnsHtml = buttons.length > 0
+    ? '<div class="modal-footer">' + buttons.map(b => {
+        const href = b.btn_href || '#';
+        const target = b.btn_external ? ' target="_blank" rel="noopener"' : '';
+        return `<a href="${esc(href)}"${target} class="btn-a" style="white-space:nowrap;margin-right:.75rem;">${esc(b.btn_text)} →</a>`;
+      }).join('') + '</div>'
+    : '';
   modal.innerHTML = `<div class="modal-box">
     <button class="modal-close" onclick="closeTlCmsModal()">×</button>
     <div class="modal-head">
@@ -1845,6 +1856,7 @@ function openTlCmsModal(eventId) {
     <div class="modal-body">
       <div class="modal-desc">${esc(ev.body||'')}</div>
     </div>
+    ${btnsHtml}
   </div>`;
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
