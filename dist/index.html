@@ -1661,32 +1661,34 @@ function openModal(id) {
 }
 
 async function submitReview(pid) {
-  const name = document.getElementById('rname-' + pid).value.trim();
-  const text = document.getElementById('rtext-' + pid).value.trim();
+  const nameEl = document.getElementById('rname-' + pid);
+  const textEl = document.getElementById('rtext-' + pid);
+  if (!nameEl || !textEl) return;
+  const name = nameEl.value.trim();
+  const text = textEl.value.trim();
   if (!name || !text) return;
-  const btn = document.querySelector('#modal-' + pid + ' .review-submit');
-  btn.disabled = true;
-  btn.textContent = '提交中…';
+  const btn = document.querySelector('.modal-overlay.open .review-submit')
+           || document.querySelector('#dyn-modal .review-submit');
+  if (btn) { btn.disabled = true; btn.textContent = '提交中…'; }
+  const apiBase = typeof CMS_API !== 'undefined' ? CMS_API : typeof API_BASE !== 'undefined' ? API_BASE : 'https://workspace.researchic.com';
   try {
-    const res = await fetch(API_BASE + '/api/reviews', {
+    const res = await fetch(apiBase + '/api/reviews', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ product_id: pid, nickname: name, content: text })
     });
     if (res.ok) {
-      document.getElementById('rname-' + pid).value = '';
-      document.getElementById('rtext-' + pid).value = '';
+      nameEl.value = '';
+      textEl.value = '';
       const thanks = document.getElementById('rthanks-' + pid);
-      thanks.style.display = 'block';
-      setTimeout(() => { thanks.style.display = 'none'; }, 4000);
+      if (thanks) { thanks.style.display = 'block'; setTimeout(() => { thanks.style.display = 'none'; }, 4000); }
     } else {
       alert('提交失败，请稍后再试。');
     }
   } catch(e) {
     alert('网络错误，请检查连接后重试。');
   } finally {
-    btn.disabled = false;
-    btn.textContent = '提交评价';
+    if (btn) { btn.disabled = false; btn.textContent = '提交评价'; }
   }
 }
 
