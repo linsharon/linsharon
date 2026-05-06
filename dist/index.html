@@ -1786,11 +1786,11 @@ async function openCmsModal(productId) {
       <div class="review-form">
         <div class="review-form-label">留下你的评价</div>
         <div class="review-form-row">
-          <input class="review-input" id="rname-p13" placeholder="你的昵称" type="text">
+          <input class="review-input" id="rname-${card.product_id}" placeholder="你的昵称" type="text">
         </div>
-        <textarea class="review-textarea" id="rtext-p13" placeholder="写下你的使用感受…"></textarea>
-        <button class="review-submit" onclick="submitReview('p13')">提交评价</button>
-        <div class="review-thanks" id="rthanks-p13" style="display:none;">谢谢你的反馈，我收到了。</div>
+        <textarea class="review-textarea" id="rtext-${card.product_id}" placeholder="写下你的使用感受…"></textarea>
+        <button class="review-submit" onclick="submitReview('${card.product_id}')">提交评价</button>
+        <div class="review-thanks" id="rthanks-${card.product_id}" style="display:none;">谢谢你的反馈，我收到了。</div>
       </div>
     </div>
     <div class="modal-footer">
